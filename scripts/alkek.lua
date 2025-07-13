@@ -1489,7 +1489,7 @@ local script = G2L["f"];
 				end
 			end 
 		end
-		spam("70489281766951")
+		spam("104157411225589")
 	end)
 	
 	coroutine.wrap(ZYJPOKE_fake_script)()
@@ -3840,7 +3840,7 @@ local script = G2L["27"];
 				end
 			end
 		end
-		Sky("70489281766951")
+		Sky("104157411225589")
 	
 	end)
 end;
