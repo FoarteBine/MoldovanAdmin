@@ -278,9 +278,14 @@ miscSec:Button("Telekinesis", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/telekinesis.lua"))()
 end)
 
-utilSec:Button("c00lgui", function()
+miscSec:Button("c00lgui", function()
     loadstring(game:GetObjects("rbxassetid://16742906657")[1].Source)()
 end)
+
+miscSec:Button("c00lclan", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cfsmi2/c00lguiv1/refs/heads/main/Main.lua", true))()
+end)
+
 
 backdoorSec:Button("Lalol hub", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/Its-LALOL/LALOL-Hub/main/Backdoor-Scanner/script'))()
