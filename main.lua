@@ -154,6 +154,9 @@ end)
 visualSec:Button("Bring All(CLIENT)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bringall.lua"))()
 end)
+visualSec:Button("Bring All 2(CLIENT)", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-all-2.lua"))()
+end)
 
 -- ==== 👻 TROLLING ====
 local trollSec = trollTab:Section("TROLLING")
