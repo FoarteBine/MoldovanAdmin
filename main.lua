@@ -117,11 +117,11 @@ placesSec:Button("MurderersVsSheriffs (NOT DUELS)", function()
 end)
 
 placesSec:Button("MM2", function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/mm2-autofarm.lua'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Au0yX/Community/main/XhubMM2'))()
 end)
 
 placesSec:Button("MM2 AUTO FARM", function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/Au0yX/Community/main/XhubMM2'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/mm2-autofarm.lua'))()
 end)
 
 placesSec:Button("Prison Life", function()
