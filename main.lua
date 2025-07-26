@@ -191,6 +191,10 @@ trollSec:Button("Bring Player(FE)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-player-fe.lua"))()
 end)
 
+trollSec:Button("Void Teleport", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/void-tp.lua"))()
+end)
+
 trollSec:Button("Motion Hub(ANIMS)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/motion-hub.lua"))()
 end)
