@@ -2,8 +2,10 @@
 
 -- // Создание GUI
 local player = game.Players.LocalPlayer
-local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+local gui = Instance.new("ScreenGui")
 gui.Name = "VoidTeleportGui"
+gui.ResetOnSpawn = false -- 💡 Это предотвращает удаление GUI при респавне
+gui.Parent = player:WaitForChild("PlayerGui")
 
 local button = Instance.new("TextButton")
 button.Size = UDim2.new(0, 200, 0, 50)
@@ -25,10 +27,14 @@ uicorner.CornerRadius = UDim.new(0, 12)
 -- // State & Variables
 local savedPosition = nil
 local inVoid = false
-local char = player.Character or player.CharacterAdded:Wait()
 
--- // Function to teleport
+-- // Character loading
+local function getChar()
+	return player.Character or player.CharacterAdded:Wait()
+end
+
 local function toggleVoid()
+	local char = getChar()
 	if not char or not char:FindFirstChild("HumanoidRootPart") then return end
 
 	local root = char:FindFirstChild("HumanoidRootPart")
