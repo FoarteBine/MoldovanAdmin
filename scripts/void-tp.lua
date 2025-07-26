@@ -1,60 +1,56 @@
--- LOCAL SCRIPT
-
--- // Создание GUI
-local player = game.Players.LocalPlayer
-local gui = Instance.new("ScreenGui")
-gui.Name = "VoidTeleportGui"
-gui.ResetOnSpawn = false -- 💡 Это предотвращает удаление GUI при респавне
-gui.Parent = player:WaitForChild("PlayerGui")
-
-local button = Instance.new("TextButton")
-button.Size = UDim2.new(0, 200, 0, 50)
-button.Position = UDim2.new(0.5, -100, 0.9, -25)
-button.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-button.TextColor3 = Color3.fromRGB(255, 255, 255)
-button.Text = "🌌 Teleport to Void"
-button.Font = Enum.Font.GothamBold
-button.TextSize = 18
-button.BorderSizePixel = 0
-button.AutoButtonColor = true
-button.Parent = gui
-button.Visible = true
-
--- // UI Styling
-local uicorner = Instance.new("UICorner", button)
-uicorner.CornerRadius = UDim.new(0, 12)
-
--- // State & Variables
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
 local savedPosition = nil
 local inVoid = false
 
--- // Character loading
-local function getChar()
-	return player.Character or player.CharacterAdded:Wait()
-end
+-- Create GUI
+local screenGui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+screenGui.Name = "VoidGui"
 
-local function toggleVoid()
-	local char = getChar()
-	if not char or not char:FindFirstChild("HumanoidRootPart") then return end
+local toggleButton = Instance.new("TextButton", screenGui)
+toggleButton.Size = UDim2.new(0, 200, 0, 50)
+toggleButton.Position = UDim2.new(0, 20, 0, 200)
+toggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+toggleButton.TextScaled = true
+toggleButton.Font = Enum.Font.GothamBold
+toggleButton.Text = "Go to Void"
 
-	local root = char:FindFirstChild("HumanoidRootPart")
+-- UI Styling
+toggleButton.BorderSizePixel = 0
+toggleButton.BackgroundTransparency = 0.1
+toggleButton.AutoButtonColor = true
+toggleButton.ZIndex = 5
+toggleButton.Active = true
 
+-- Toggle function
+local function teleportVoid()
+	local root = character:FindFirstChild("HumanoidRootPart")
+	if not root then return end
+	
 	if not inVoid then
-		-- Save current position
 		savedPosition = root.Position
-		-- Teleport high into the sky
-		root.CFrame = CFrame.new(0, 9999, 0)
-		button.Text = "🌍 Return to World"
+		root.CFrame = CFrame.new(0, 1e6, 0) -- Real void (very high)
+		toggleButton.Text = "Return"
+		inVoid = true
 	else
-		-- Return to saved position
 		if savedPosition then
 			root.CFrame = CFrame.new(savedPosition)
 		end
-		button.Text = "🌌 Teleport to Void"
+		toggleButton.Text = "Go to Void"
+		inVoid = false
 	end
-
-	inVoid = not inVoid
 end
 
--- // Connect button
-button.MouseButton1Click:Connect(toggleVoid)
+toggleButton.MouseButton1Click:Connect(function()
+	character = player.Character or player.CharacterAdded:Wait()
+	teleportVoid()
+end)
+
+-- Auto-update character if respawned
+player.CharacterAdded:Connect(function(char)
+	character = char
+	inVoid = false
+	toggleButton.Text = "Go to Void"
+end)
