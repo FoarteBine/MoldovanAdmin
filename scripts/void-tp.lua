@@ -1,58 +1,61 @@
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
+-- // Создание GUI
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "VoidTeleportGui"
+gui.ResetOnSpawn = false -- 💡 Это предотвращает удаление GUI при респавне
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0, 200, 0, 50)
+button.Position = UDim2.new(0.5, -100, 0.9, -25)
+button.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.Text = "🌌 Teleport to Void"
+button.Font = Enum.Font.GothamBold
+button.TextSize = 18
+button.BorderSizePixel = 0
+button.AutoButtonColor = true
+button.Parent = gui
+button.Visible = true
+
+-- // UI Styling
+local uicorner = Instance.new("UICorner", button)
+uicorner.CornerRadius = UDim.new(0, 12)
+
+-- // State & Variables
 local savedPosition = nil
 local inVoid = false
 
--- Create GUI
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "VoidGui"
-screenGui.ResetOnSpawn = false -- 💡 Не удаляется при смерти
-screenGui.Parent = player:WaitForChild("PlayerGui")
+-- // Character loading
+local function getChar()
+	return player.Character or player.CharacterAdded:Wait()
+end
 
-local toggleButton = Instance.new("TextButton")
-toggleButton.Size = UDim2.new(0, 200, 0, 50)
-toggleButton.Position = UDim2.new(0, 20, 0, 200)
-toggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-toggleButton.TextScaled = true
-toggleButton.Font = Enum.Font.GothamBold
-toggleButton.Text = "Go to Void"
-toggleButton.BorderSizePixel = 0
-toggleButton.BackgroundTransparency = 0.1
-toggleButton.AutoButtonColor = true
-toggleButton.ZIndex = 5
-toggleButton.Active = true
-toggleButton.Parent = screenGui
+local function toggleVoid()
+	local char = getChar()
+	if not char or not char:FindFirstChild("HumanoidRootPart") then return end
 
--- Teleport function
-local function teleportVoid()
-	local root = character and character:FindFirstChild("HumanoidRootPart")
-	if not root then return end
+	local root = char:FindFirstChild("HumanoidRootPart")
 
 	if not inVoid then
 		savedPosition = root.Position
-		root.CFrame = CFrame.new(0, 1e6, 0) -- 🌀 Реальный void
-		toggleButton.Text = "Return"
-		inVoid = true
+		root.CFrame = CFrame.new(0, 1e6, 0) -- ☁️ Настоящий VOID
+		button.Text = "🌍 Return to World"
 	else
 		if savedPosition then
 			root.CFrame = CFrame.new(savedPosition)
 		end
-		toggleButton.Text = "Go to Void"
-		inVoid = false
+		button.Text = "🌌 Teleport to Void"
 	end
+
+	inVoid = not inVoid
 end
 
--- Button click event
-toggleButton.MouseButton1Click:Connect(function()
-	character = player.Character or player.CharacterAdded:Wait()
-	teleportVoid()
-end)
+-- // Connect button
+button.MouseButton1Click:Connect(toggleVoid)
 
--- On respawn
-player.CharacterAdded:Connect(function(char)
-	character = char
+-- // Обработка респавна персонажа
+player.CharacterAdded:Connect(function()
 	inVoid = false
-	toggleButton.Text = "Go to Void"
+	button.Text = "🌌 Teleport to Void"
 end)
