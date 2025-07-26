@@ -163,16 +163,16 @@ visualSec:Button("Hitbox Expander GUI", function()
     loadstring(game:HttpGet("https://rscripts.net/raw/universal-hitbox-v10-open-source_1733529165192_LIstHcFlfK.txt",true))()
 end)
 
-visualSec:Button("Bring All GUI(CLIENT)", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-all-3.lua"))()
-end)
-
 visualSec:Button("Bring All(CLIENT)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bringall.lua"))()
 end)
 
 visualSec:Button("Bring All 2(CLIENT)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-all-2.lua"))()
+end)
+
+visualSec:Button("Bring All GUI(CLIENT)", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-all-3.lua"))()
 end)
 
 -- ==== 👻 TROLLING ====
