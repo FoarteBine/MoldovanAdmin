@@ -133,6 +133,10 @@ placesSec:Button("Work at Pizza Place", function()
 end)
 
 placesSec:Button("Free Admin", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/kasava", true))()
+end)
+
+placesSec:Button("Free Admin HAXX2", function()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/haxx-v2.lua'),true))()
 end)
 
