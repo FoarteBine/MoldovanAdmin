@@ -116,6 +116,10 @@ placesSec:Button("MurderersVsSheriffs (NOT DUELS)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Bebo-Mods/BeboScripts/main/MurderersVsSheriffs.lua"))()
 end)
 
+placesSec:Button("Grow A Garden", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nootmaus/GrowAAGarden/refs/heads/main/mauscripts"))()
+end)
+
 placesSec:Button("MM2", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/Au0yX/Community/main/XhubMM2'))()
 end)
