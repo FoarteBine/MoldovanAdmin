@@ -19,7 +19,7 @@ local playerSec = utilTab:Section("PLAYER")
 local placesSec = utilTab:Section("PLACES")
 
 --TUBERS93 PRANK//VISUAL
-loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/tubers93-visual.lua"))()
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/tubers93-visual.lua"))()
 
 utilSec:Button("Rejoin", function()
     local TeleportService = game:GetService("TeleportService")
