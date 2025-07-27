@@ -1,8 +1,6 @@
 local HttpService = game:GetService("HttpService")
 local TeleportService = game:GetService("TeleportService")
 local Players = game:GetService("Players")
---TUBERS93 PRANK//VISUAL
-loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/tubers93-visual.lua"))()
 
 local Luxtl = loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/ui-lib.lua"))()
 local Luxt = Luxtl.CreateWindow("Moldovan Admin", "v0.5 beta")
@@ -19,6 +17,9 @@ local creditsTab = Luxt:Tab("📜 Credits")
 local utilSec = utilTab:Section("UTILITY")
 local playerSec = utilTab:Section("PLAYER")
 local placesSec = utilTab:Section("PLACES")
+
+--TUBERS93 PRANK//VISUAL
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/tubers93-visual.lua"))()
 
 utilSec:Button("Rejoin", function()
     local TeleportService = game:GetService("TeleportService")
