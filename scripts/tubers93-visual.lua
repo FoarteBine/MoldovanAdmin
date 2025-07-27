@@ -3,7 +3,9 @@ local gui = player:WaitForChild("PlayerGui")
 local workspace = game:GetService("Workspace")
 local lighting = game:GetService("Lighting")
 
-task.wait(30)
+delay(30, function()
+	--hsdgewgrehserhtrhsrtjtsj
+end)
 
 -- 1. Hint, который не пропадает
 local hint = Instance.new("Hint")
