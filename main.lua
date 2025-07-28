@@ -198,6 +198,10 @@ trollSec:Button("Void Teleport", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/void-tp.lua"))()
 end)
 
+trollSec:Button("Fake Lag", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/fake-lag.lua"))()
+end)
+
 trollSec:Button("Motion Hub(ANIMS)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/motion-hub.lua"))()
 end)
