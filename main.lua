@@ -123,6 +123,10 @@ placesSec:Button("Grow A Garden", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/nootmaus/GrowAAGarden/refs/heads/main/mauscripts"))()
 end)
 
+placesSec:Button("Survive 99 night in forest", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VWExtra/main/NightsInTheForest.lua", true))()
+end)
+
 placesSec:Button("MM2", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/Au0yX/Community/main/XhubMM2'))()
 end)
