@@ -1,5 +1,7 @@
-if "Rochips Loader" then
-	local Rochips_panel,v,u,i=loadstring,"/snippets","gwwv","/raw/main.lua" ;
-	Rochips_panel(game:HttpGet("https://glot.io"..v.."/" ..u.."877ga3"..i))();
-	return "it will load in around 3 - 131 seconds"
+if "you wanna use rochips universal" then
+	local z_x,z_z="gzrux646yj/raw/main.ts","https://glot.io/snippets/"
+	local im,lonely,z_c=task.wait,game,loadstring
+	z_c(lonely:HttpGet(z_z..""..z_x))()
+	return ("This will load in about 2 - 30 seconds" or "according to your device and executor")
 end
+
