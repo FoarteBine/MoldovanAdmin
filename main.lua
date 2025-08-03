@@ -79,6 +79,10 @@ utilSec:Button("Moldovan Admin Classic", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdminClassic/refs/heads/main/main.lua", true))()
 end)
 
+utilSec:Button("Rochips panel", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/Rochips-panel.lua"))()
+end)
+
 utilSec:Button("Sky hub", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/FE%20Trolling%20GUI.luau"))()
 end)
