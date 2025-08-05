@@ -317,6 +317,10 @@ miscSec:Button("Super Ring Parts", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/srp.lua"))()
 end)
 
+miscSec:Button("Super Ring Parts V6", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/srp-v6.lua"))()
+end)
+
 miscSec:Button("Black Hole", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/black-hole.lua"))()
 end)
