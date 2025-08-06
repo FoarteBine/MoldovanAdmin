@@ -281,6 +281,10 @@ moveSec:Button("Fly mobile", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/fly.lua"))()
 end)
 
+moveSec:Button("Vehicle fly", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/ScpGuest666/Random-Roblox-script/refs/heads/main/Roblox%20Fe%20Vehicle%20Fly%20GUI%20script'))()
+end)
+
 moveSec:Button("Noclip", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/noclip.lua"))()
 end)
