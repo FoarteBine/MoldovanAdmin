@@ -119,6 +119,10 @@ placesSec:Button("Naval Warfare", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Hm5011/hussain/refs/heads/main/Naval%20Warfare"))()
 end)
 
+placesSec:Button("Brookhaven", function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-Sander-XY-35845"))()
+end)
+
 placesSec:Button("MurderersVsSheriffs (NOT DUELS)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Bebo-Mods/BeboScripts/main/MurderersVsSheriffs.lua"))()
 end)
