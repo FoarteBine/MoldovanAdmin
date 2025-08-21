@@ -91,6 +91,18 @@ utilSec:Button("Engospy", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/engospy.lua"))()
 end)
 
+utilSec:Button("Hydroxide", function()
+    local owner = "Upbolt"
+    local branch = "revision"
+    
+    local function webImport(file)
+        return loadstring(game:HttpGetAsync(("https://raw.githubusercontent.com/%s/Hydroxide/%s/%s.lua"):format(owner, branch, file)), file .. '.lua')()
+    end
+    
+    webImport("init")
+    webImport("ui/main")
+end)
+
 utilSec:Button("Remove Gameasses", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/rmpass.lua"))()
 end)
