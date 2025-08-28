@@ -127,6 +127,10 @@ playerSec:Button("Anti aim", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/antiaim.lua"))()
 end)
 
+playerSec:Button("Dupe Tools FE", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/dupe-tools.lua"))()
+end)
+
 placesSec:Button("Naval Warfare", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Hm5011/hussain/refs/heads/main/Naval%20Warfare"))()
 end)
