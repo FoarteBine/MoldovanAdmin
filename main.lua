@@ -131,6 +131,10 @@ playerSec:Button("Dupe Tools FE", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/dupe-tools.lua"))()
 end)
 
+playerSec:Button("Lag Switch", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe/main/Protected%20-%202023-05-28T225112.055.lua.txt'),true))()
+end)
+
 placesSec:Button("Naval Warfare", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Hm5011/hussain/refs/heads/main/Naval%20Warfare"))()
 end)
