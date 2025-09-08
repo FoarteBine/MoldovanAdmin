@@ -267,6 +267,10 @@ flingSec:Button("Fling Player", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/flingplayer.lua"))()
 end)
 
+flingSec:Button("Rvanka", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/rvanka.lua"))()
+end)
+
 flingSec:Button("Fling All", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
 end)
