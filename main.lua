@@ -231,6 +231,10 @@ trollSec:Button("Chat Art", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/chatart.lua"))()
 end)
 
+trollSec:Button("Chat Art Pro", function()
+    loadstring(game:HttpGet("https://github.com/FoarteBine/MoldovanAdmin/blob/main/scripts/chat-art-pro.lua"))()
+end)
+
 trollSec:Button("Stalker(Spooky)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/stalker.lua"))()
 end)
