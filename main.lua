@@ -199,6 +199,10 @@ visualSec:Button("ESP", function()
     pcall(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua'))() end)
 end)
 
+visualSec:Button("Project RTRIX(ESP&AIM)", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/projectrtrix.lua"))()
+end)
+
 visualSec:Button("Hitbox Expander", function()
     loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Hitbox-expander-with-inbuilt-inf-jump-12932"))()
 end)
