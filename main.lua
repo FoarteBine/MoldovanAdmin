@@ -394,6 +394,12 @@ miscSec:Button("Super Ring Parts V6", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/srp-v6.lua"))()
 end)
 
+miscSec:Button("Kawai Aura", function()
+    pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/KAWAII-AURA/main/kawaii_aura.lua", true))()
+    end)
+end)
+
 miscSec:Button("Black Hole", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/black-hole.lua"))()
 end)
