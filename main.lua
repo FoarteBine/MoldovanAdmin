@@ -231,6 +231,10 @@ visualSec:Button("Bring All GUI(CLIENT)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-all-3.lua"))()
 end)
 
+visualSec:Button("Show network ownership", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/show-ownership.lua"))()
+end)
+
 -- ==== 👻 TROLLING ====
 local trollSec = trollTab:Section("TROLLING")
 local flingSec = trollTab:Section("FLING")
