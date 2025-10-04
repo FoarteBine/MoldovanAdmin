@@ -303,6 +303,10 @@ flingSec:Button("Fling All(GPT)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/gpt-fling-all.lua"))()
 end)
 
+flingSec:Button("Fling All GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/fling-all-gui.lua"))()
+end)
+
 flingSec:Button("R6 Fling", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/r6fling.lua"))()
 end)
