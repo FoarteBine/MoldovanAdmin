@@ -315,6 +315,10 @@ flingSec:Button("Touch fling", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/touch-fling.lua"))()
 end)
 
+flingSec:Button("Multi Fling", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/K1LAS1K/Ultimate-Fling-GUI/main/flingscript.lua"))()
+end)
+
 flingSec:Button("Tp to all(USE TOUCH FLING)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/tp-to-all.lua"))()
 end)
