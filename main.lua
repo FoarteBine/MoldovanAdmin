@@ -132,6 +132,10 @@ playerSec:Button("Anti seat", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/antiseat.lua"))()
 end)
 
+playerSec:Button("Anti fall damage", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/no-fall.lua"))()
+end)
+
 playerSec:Button("Anti aim", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/antiaim.lua"))()
 end)
