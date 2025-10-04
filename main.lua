@@ -96,6 +96,10 @@ utilSec:Button("Engospy", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/engospy.lua"))()
 end)
 
+utilSec:Button("Ketamine", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Ketamine/refs/heads/main/Ketamine.lua"))()
+end)
+
 utilSec:Button("Hydroxide", function()
     local owner = "Upbolt"
     local branch = "revision"
