@@ -243,6 +243,10 @@ trollSec:Button("Bring Player(FE)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-player-fe.lua"))()
 end)
 
+trollSec:Button("Control Npc(FE)", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/ctrl-npc.lua"))()
+end)
+
 trollSec:Button("Void Teleport", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/void-tp.lua"))()
 end)
