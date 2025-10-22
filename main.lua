@@ -62,6 +62,31 @@ utilSec:Button("Server Hop", function()
     serverHop()
 end)
 
+utilSec:Button("Instant proximity prompts", function()
+    task.spawn(function()
+        local function setInstantPrompt(prompt)
+            pcall(function()
+                prompt.HoldDuration = 0
+                prompt.RequiresLineOfSight = false
+            end)
+        end
+        
+        for _,prompt in ipairs(game:GetDescendants()) do
+            if prompt:IsA("ProximityPrompt") then
+                setInstantPrompt(prompt)
+            end
+        end
+        
+        game.DescendantAdded:Connect(function(desc)
+            if desc:IsA("ProximityPrompt") then
+                setInstantPrompt(desc)
+            end
+        end)
+        
+        print("[LocalScript] Fixing pp successfull.")
+    end)
+end)
+
 utilSec:Button("Infinity Yield", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
@@ -157,6 +182,10 @@ end)
 
 placesSec:Button("Brookhaven", function()
     loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-Sander-XY-35845"))()
+end)
+
+placesSec:Button("Brookhaven Skybox FE", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/magoozelote/w/main/w.lua"))() 
 end)
 
 placesSec:Button("MurderersVsSheriffs (NOT DUELS)", function()
@@ -257,6 +286,10 @@ end)
 
 trollSec:Button("Chat Art Pro", function()
     loadstring(game:HttpGet("https://github.com/FoarteBine/MoldovanAdmin/blob/main/scripts/chat-art-pro.lua"))()
+end)
+
+trollSec:Button("Universal KillAura", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/D768ibVu'))("https://t.me/+X-HS7qugKIQ0MTRi")
 end)
 
 trollSec:Button("Stalker(Spooky)", function()
