@@ -183,6 +183,11 @@ placesSec:Button("Prison Life", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/prison-life.lua'))()
 end)
 
+
+placesSec:Button("Prison Life Darkones", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/TheDarkoneMarcillisePex/Other-Scripts/main/Prison%20Life%20GUI'))()
+end)
+
 placesSec:Button("Livetopia", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/TheDarkoneMarcillisePex/Other-Scripts/main/Live%20Topia%20GUI'))()
 end)
