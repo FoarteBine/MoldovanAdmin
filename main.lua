@@ -304,6 +304,10 @@ trollSec:Button("Control Npc(FE)", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/ctrl-npc.lua"))()
 end)
 
+trollSec:Button("Tool KillAura", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/CCh9W9Tt", true))()
+end)
+
 trollSec:Button("Void Teleport", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/void-tp.lua"))()
 end)
