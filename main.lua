@@ -149,7 +149,7 @@ utilSec:Button("Keyboard", function()
 end)
 
 playerSec:Button("Invisible", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/invisible.lua"))()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Invisible-script-20557"))()
 end)
 
 playerSec:Button("HRP Reject", function()
