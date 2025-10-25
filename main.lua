@@ -62,7 +62,11 @@ utilSec:Button("Server Hop", function()
     serverHop()
 end)
 
-utilSec:Button("Instant proximity prompts", function()
+utilSec:Button("Server Browser", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Syr0nix/RedFoxServerBowser/refs/heads/main/Mainlua"))()
+end)
+
+utilSec:Button("Instant pp", function()
     task.spawn(function()
         local function setInstantPrompt(prompt)
             pcall(function()
@@ -144,12 +148,20 @@ utilSec:Button("Remove Gameasses", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/rmpass.lua"))()
 end)
 
+utilSec:Button("Free Gameasses", function()
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/dark-modz/6982de484735e730494b2d5a10fd6a2a/raw/a92563b0cd6a63683341a09f54baccea5349ed69/feGamepassV2",true))()
+end)
+
 utilSec:Button("Keyboard", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Xxtan31/Ata/main/deltakeyboardcrack.txt", true))()
 end)
 
 playerSec:Button("Invisible", function()
     loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Invisible-script-20557"))()
+end)
+
+playerSec:Button("Brick GodMove", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/brickgodmove.lua"))()
 end)
 
 playerSec:Button("HRP Reject", function()
@@ -182,6 +194,14 @@ end)
 
 placesSec:Button("Brookhaven", function()
     loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-Sander-XY-35845"))()
+end)
+
+placesSec:Button("Chaos", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/Dan41/Scripts/main/%5BCHAOS%5D%20CHAOTIC%20HUB.lua'),true))()
+end)
+
+placesSec:Button("Frontline", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ZenHub103/Zen-Hub-/refs/heads/main/Fortline"))()
 end)
 
 placesSec:Button("Brookhaven Skybox FE", function()
