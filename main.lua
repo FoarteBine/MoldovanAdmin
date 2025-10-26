@@ -468,7 +468,7 @@ miscSec:Button("F3X Panel", function()
 end)
 
 miscSec:Button("F3XSploit", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/F3XSploit"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/f3xsploit.lua"))()
 end)
 
 miscSec:Button("Super Ring Parts", function()
