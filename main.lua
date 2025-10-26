@@ -455,12 +455,20 @@ miscSec:Button("Blue2Spooky Revive", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/blue2spooky.lua"))()
 end)
 
+miscSec:Button("Blue2Spooky Remake", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/b2sremake.lua"))()
+end)
+
 miscSec:Button("Alkek", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/alkek.lua", true))()
 end)
 
 miscSec:Button("F3X Panel", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/SkireScripts/F3X-Panel/main/Main.lua"))()
+end)
+
+miscSec:Button("F3XSploit", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/F3XSploit"))()
 end)
 
 miscSec:Button("Super Ring Parts", function()
