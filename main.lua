@@ -224,6 +224,10 @@ placesSec:Button("MM2", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/Au0yX/Community/main/XhubMM2'))()
 end)
 
+placesSec:Button("Evade", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/ZTuq4cAc"))()
+end)
+
 placesSec:Button("MM2 AUTO FARM", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/mm2-autofarm.lua'))()
 end)
