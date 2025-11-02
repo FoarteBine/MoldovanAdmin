@@ -272,8 +272,8 @@ visualSec:Button("ESP", function()
     pcall(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua'))() end)
 end)
 
-visualSec:Button("Project RTRIX(ESP&AIM)", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/projectrtrix.lua"))()
+visualSec:Button("Open Aimbot", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ttwizz/Open-Aimbot/master/source.lua", true))()
 end)
 
 visualSec:Button("Hitbox Expander", function()
