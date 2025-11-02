@@ -160,6 +160,10 @@ playerSec:Button("Invisible", function()
     loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Invisible-script-20557"))()
 end)
 
+playerSec:Button("Hiel Gliter", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/jurylmao/otherscripts/refs/heads/main/anim1.lua'))()
+end)
+
 playerSec:Button("Brick GodMove", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/brickgodmove.lua"))()
 end)
