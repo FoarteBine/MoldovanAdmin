@@ -257,6 +257,10 @@ placesSec:Button("Work at Pizza Place", function()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/Hm5011/hussain/refs/heads/main/Work%20at%20a%20pizza%20place'),true))()
 end)
 
+placesSec:Button("Delta Executor Lite", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/deltaexecutorlite.lua'))()
+end)
+
 placesSec:Button("Free Admin", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/kasava", true))()
 end)
