@@ -240,6 +240,10 @@ placesSec:Button("MM2 AUTO FARM", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/mm2-autofarm.lua'))()
 end)
 
+placesSec:Button("BloxStrike", function()
+    loadstring(game:HttpGet("https://expectional.dev/loadstring/Blox-Strike.lua"))()
+end)
+
 placesSec:Button("Ban or Get Banned", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/ban-or-get-banned.lua'))()
 end)
