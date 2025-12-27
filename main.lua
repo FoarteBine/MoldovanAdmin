@@ -240,10 +240,13 @@ placesSec:Button("MM2 AUTO FARM", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/mm2-autofarm.lua'))()
 end)
 
+placesSec:Button("Ban or Get Banned", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/ban-or-get-banned.lua'))()
+end)
+
 placesSec:Button("Prison Life", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/prison-life.lua'))()
 end)
-
 
 placesSec:Button("Prison Life Darkones", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/TheDarkoneMarcillisePex/Other-Scripts/main/Prison%20Life%20GUI'))()
