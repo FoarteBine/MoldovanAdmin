@@ -236,6 +236,10 @@ placesSec:Button("Evade", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/ZTuq4cAc"))()
 end)
 
+placesSec:Button("Server Admin", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/server-admin-antiafk.lua'))()
+end)
+
 placesSec:Button("MM2 AUTO FARM", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/mm2-autofarm.lua'))()
 end)
