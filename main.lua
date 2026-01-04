@@ -5,7 +5,6 @@ local Players = game:GetService("Players")
 local Luxtl = loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/ui-lib.lua"))()
 local Luxt = Luxtl.CreateWindow("Moldovan Admin", "v0.5 beta")
 
--- ВКЛАДКИ
 local utilTab = Luxt:Tab("🧠 Utility")
 local visualTab = Luxt:Tab("👁️ Visual")
 local trollTab = Luxt:Tab("👻 Trolling")
