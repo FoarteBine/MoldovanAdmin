@@ -338,6 +338,10 @@ trollSec:Button("Emote bar", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua"))()
 end)
 
+trollSec:Button("Obby solver Gui", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/MoonhookSumDev/universal-obby/main/Moonhook-tcoh-universalobby.txt"))()
+end)
+
 trollSec:Button("Chat Art", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/chatart.lua"))()
 end)
