@@ -94,6 +94,10 @@ utilSec:Button("Clear Ws", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/clearws.lua"))()
 end)
 
+utilSec:Button("Cmdbar2", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/cmdbar2.lua"))()
+end)
+
 utilSec:Button("Infinity Yield", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
