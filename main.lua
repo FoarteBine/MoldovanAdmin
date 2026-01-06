@@ -32,7 +32,7 @@ local placesSec = utilTab:Section("PLACES")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/mobile-button.lua"))()
 
 --NOTIFY SYSTEM
-loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/notify-system.lua"))()
+local notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/notify-system.lua"))()
 notify.Notify("MoldovanAdmin", "The script has been loaded successfully.", "success", 3)
 task.delay(1, function()
 	notify.Notify("MoldovanAdmin", "The real author of the script is FoarteBine.", "info", 3)
