@@ -1,58 +1,47 @@
--- LocalScript в StarterPlayerScripts
-
 task.spawn(function()
-    local player = game.Players.LocalPlayer
-    local userInputService = game:GetService("UserInputService")
-    local virtualInput = game:GetService("VirtualInputManager")
+    local UIS = game:GetService("UserInputService")
+    local CoreGui = game:GetService("CoreGui")
 
-    -- Проверка мобильного устройства
-    if not userInputService.TouchEnabled then
-        return -- если не мобильное устройство, выходим
+    if not UIS.TouchEnabled then
+        return
     end
 
-    -- Создание ScreenGui в CoreGui
+    local function findLuxwareGui()
+        for _, v in ipairs(CoreGui:GetChildren()) do
+            if v:IsA("ScreenGui") and string.find(v.Name, "Luxware") then
+                return v
+            end
+        end
+    end
+
+    if CoreGui:FindFirstChild("AltButtonGui") then
+        return
+    end
+
     local screenGui = Instance.new("ScreenGui")
     screenGui.Name = "AltButtonGui"
     screenGui.ResetOnSpawn = false
-    screenGui.Parent = game:GetService("CoreGui")
+    screenGui.Parent = CoreGui
 
-    -- Создание кнопки
     local button = Instance.new("TextButton")
     button.Size = UDim2.new(0, 60, 0, 60)
-    button.Position = UDim2.new(0.9, -40, 0.8, -40) -- справа внизу
+    button.Position = UDim2.new(0.9, -40, 0.8, -40)
     button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     button.BackgroundTransparency = 0.3
     button.TextColor3 = Color3.fromRGB(255, 255, 255)
-    button.Text = "Alt"
+    button.Text = "LX"
     button.Font = Enum.Font.SourceSansBold
     button.TextScaled = true
-    button.AutoButtonColor = true
     button.BorderSizePixel = 0
     button.Parent = screenGui
 
-    -- Делаем кнопку круглой через UICorner
     local corner = Instance.new("UICorner")
-    corner.CornerRadius = UDim.new(0.5, 0) -- 50% радиус = круг
+    corner.CornerRadius = UDim.new(0.5, 0)
     corner.Parent = button
 
-    -- Переменные для перетаскивания
     local dragging = false
-    local dragInput
-    local dragStart
-    local startPos
+    local dragStart, startPos
 
-    -- Функция обновления позиции кнопки при перетаскивании
-    local function update(input)
-        local delta = input.Position - dragStart
-        button.Position = UDim2.new(
-            startPos.X.Scale,
-            startPos.X.Offset + delta.X,
-            startPos.Y.Scale,
-            startPos.Y.Offset + delta.Y
-        )
-    end
-
-    -- События кнопки
     button.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.Touch then
             dragging = true
@@ -67,22 +56,22 @@ task.spawn(function()
         end
     end)
 
-    button.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.Touch then
-            dragInput = input
+    UIS.TouchMoved:Connect(function(input)
+        if dragging then
+            local delta = input.Position - dragStart
+            button.Position = UDim2.new(
+                startPos.X.Scale,
+                startPos.X.Offset + delta.X,
+                startPos.Y.Scale,
+                startPos.Y.Offset + delta.Y
+            )
         end
     end)
 
-    userInputService.TouchMoved:Connect(function(input)
-        if dragging and input == dragInput then
-            update(input)
-        end
-    end)
-
-    -- Эмуляция нажатия Alt
     button.MouseButton1Click:Connect(function()
-        virtualInput:SendKeyEvent(true, Enum.KeyCode.LeftAlt, false, game)
-        wait(0.1)
-        virtualInput:SendKeyEvent(false, Enum.KeyCode.LeftAlt, false, game)
+        local luxGui = findLuxwareGui()
+        if luxGui then
+            luxGui.Enabled = not luxGui.Enabled
+        end
     end)
 end)
