@@ -33,12 +33,12 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAd
 
 --NOTIFY SYSTEM
 local notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/notify-system.lua"))()
-notify.Notify("MoldovanAdmin", "The script has been loaded successfully.", "success", 3)
-task.delay(1, function()
-	notify.Notify("MoldovanAdmin", "The real author of the script is FoarteBine.", "info", 3)
+notify.Notify("MoldovanAdmin", "The script has been loaded successfully.", "success", 5)
+task.delay(2.5, function()
+	notify.Notify("MoldovanAdmin", "The real author of the script is FoarteBine.", "info", 5)
 end)
-task.delay(3, function()
-    notify.Notify("MoldovanAdmin", "You can put the script into startup by placing the file in /workspace/autorun of your exploit.", "info", 3)
+task.delay(5, function()
+    notify.Notify("MoldovanAdmin", "You can put the script into startup by placing the file in /workspace/autorun of your exploit.", "info", 5)
 end)
 
 utilSec:Button("Rejoin", [[
