@@ -18,7 +18,7 @@ task.spawn(function()
 
     -- Создание кнопки
     local button = Instance.new("TextButton")
-    button.Size = UDim2.new(0, 80, 0, 80)
+    button.Size = UDim2.new(0, 60, 0, 60)
     button.Position = UDim2.new(0.9, -40, 0.8, -40) -- справа внизу
     button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     button.BackgroundTransparency = 0.3
