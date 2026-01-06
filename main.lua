@@ -257,6 +257,10 @@ placesSec:Button("Evade", [[
     loadstring(game:HttpGet("https://pastebin.com/raw/ZTuq4cAc"))()
 ]])
 
+placesSec:Button("Hug Fight Tower", [[
+    loadstring(game:HttpGet("https://rawscripts.net/raw/HUG-Fights-Tower-KILL-ALL-BRING-ALL-RAGDOLL-ALL-KEYLESS-SCRIPT-51266"))()
+]])
+
 placesSec:Button("Server Admin", [[
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/server-admin-antiafk.lua'))()
 ]])
