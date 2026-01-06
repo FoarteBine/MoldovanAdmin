@@ -31,6 +31,16 @@ local placesSec = utilTab:Section("PLACES")
 --MOBILE ALT BUTTON
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/mobile-button.lua"))()
 
+--NOTIFY SYSTEM
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/notify-system.lua"))()
+notify.Notify("MoldovanAdmin", "The script has been loaded successfully.", "success", 3)
+task.delay(1, function()
+	notify.Notify("MoldovanAdmin", "The real author of the script is FoarteBine.", "info", 3)
+end)
+task.delay(3, function()
+    notify.Notify("MoldovanAdmin", "You can put the script into startup by placing the file in /workspace/autorun of your exploit.", "info", 3)
+end)
+
 utilSec:Button("Rejoin", [[
     local TeleportService = game:GetService("TeleportService")
     local Players = game:GetService("Players")
