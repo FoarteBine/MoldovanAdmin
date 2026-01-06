@@ -29,7 +29,7 @@ task.spawn(function()
     button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     button.BackgroundTransparency = 0.3
     button.TextColor3 = Color3.fromRGB(255, 255, 255)
-    button.Text = "LX"
+    button.Text = "MD"
     button.Font = Enum.Font.SourceSansBold
     button.TextScaled = true
     button.BorderSizePixel = 0
