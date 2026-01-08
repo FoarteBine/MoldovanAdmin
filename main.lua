@@ -177,6 +177,10 @@ utilSec:Button("Free Gameasses", [[
     loadstring(game:HttpGet("https://gist.githubusercontent.com/dark-modz/6982de484735e730494b2d5a10fd6a2a/raw/a92563b0cd6a63683341a09f54baccea5349ed69/feGamepassV2",true))()
 ]])
 
+utilSec:Button("Free Dev Gameasses", [[
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Free-Gamepasses-Not-Work-All-Game-Only-Trash-Game-45310"))()
+]])
+
 utilSec:Button("Keyboard", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Xxtan31/Ata/main/deltakeyboardcrack.txt", true))()
 ]])
