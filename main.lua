@@ -10,11 +10,6 @@ end
 
 genv.__INIT_MD_ADMIN = true
 
---DISABLE GAMEPLAY PAUSED
-while task.wait() do
-game.Players.LocalPlayer.GameplayPaused = false
-end
-
 local Luxtl = loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/ui-lib.lua"))()
 local Luxt = Luxtl.CreateWindow("Moldovan Admin", "v2.0 beta")
 
