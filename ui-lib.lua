@@ -262,6 +262,43 @@ function Luxware.CreateWindow(titleName)
         end
     end)
 
+    -- Copy Button
+    local CopyBtn = Create("TextButton", {
+        Parent = ExecFrame,
+        Size = UDim2.new(0, 80, 0, 25),
+        Position = UDim2.new(1, -175, 1, -30), -- Смещаем левее кнопки Execute
+        BackgroundColor3 = Theme.Element,
+        Text = "Copy Source",
+        Font = Enum.Font.GothamBold,
+        TextColor3 = Theme.Text,
+        TextSize = 12
+    })
+    Create("UICorner", {Parent = CopyBtn, CornerRadius = UDim.new(0, 6)})
+
+    -- Логика копирования
+    CopyBtn.MouseButton1Click:Connect(function()
+        Ripple(CopyBtn)
+        if ExecutorBoxRef and ExecutorBoxRef.Text ~= "" then
+            local success, err = pcall(function()
+                setclipboard(ExecutorBoxRef.Text)
+            end)
+            
+            if success then
+                local originalText = CopyBtn.Text
+                CopyBtn.Text = "Copied!"
+                CopyBtn.TextColor3 = Theme.Accent
+                task.wait(1.5)
+                CopyBtn.Text = originalText
+                CopyBtn.TextColor3 = Theme.Text
+            else
+                warn("Clipboard error: ", err)
+                CopyBtn.Text = "Error"
+                task.wait(1.5)
+                CopyBtn.Text = "Copy Source"
+            end
+        end
+    end)
+
     -- FAB (Floating Action Button)
     local FAB = Create("TextButton", {
         Parent = ScreenGui,
@@ -453,12 +490,25 @@ function Luxware.CreateWindow(titleName)
             
             local Items = {}
 
-            -- Helper for Edit Button
+            -- Вспомогательная функция для получения кода из loadstring
+            local function getRawScript(loadstringCode)
+                -- Паттерн ищет ссылку внутри game:HttpGet("ссылка") или game:HttpGet'ссылка'
+                local url = loadstringCode:match('game:HttpGet%s*%(?%s*["\'](.-)["\']')
+                if url then
+                    local success, result = pcall(function()
+                        return game:HttpGet(url)
+                    end)
+                    if success then return result end
+                end
+                return loadstringCode -- Возвращаем оригинал, если не нашли ссылку или ошибка
+            end
+
+            -- Обновленный Helper для Edit Button
             local function AddEditBtn(parentFrame, codeSnippet)
                 local EditBtn = Create("TextButton", {
                     Parent = parentFrame,
                     Size = UDim2.new(0, 30, 0, 30),
-                    Position = UDim2.new(1, -35, 0.5, -15), -- Right aligned
+                    Position = UDim2.new(1, -35, 0.5, -15),
                     BackgroundColor3 = Theme.Background,
                     Text = "✏️",
                     TextSize = 14,
@@ -470,7 +520,31 @@ function Luxware.CreateWindow(titleName)
                 EditBtn.MouseButton1Click:Connect(function()
                     Ripple(EditBtn)
                     if ToggleExecutorFunc then
-                        ToggleExecutorFunc(codeSnippet)
+                        -- Показываем текст "Loading...", пока скачивается скрипт
+                        ToggleExecutorFunc("-- [ PLEASE WAIT ] --\n-- Fetching script from source...")
+                        
+                        task.spawn(function()
+                            local finalContent = ""
+                            -- Если это loadstring, пытаемся достать исходник
+                            if codeSnippet:find("loadstring") and codeSnippet:find("game:HttpGet") then
+                                local raw = getRawScript(codeSnippet)
+                                
+                                -- Формируем красивый заголовок
+                                local header = "--[[ \n" ..
+                                            "    SOURCE RETRIEVED SUCCESSFULLY\n" ..
+                                            "    Original Loader:\n" ..
+                                            "    " .. codeSnippet .. "\n" ..
+                                            "    ------------------------------------------\n" ..
+                                            "    This script was automatically fetched. \n" ..
+                                            "    MoldovanAdmin by FoarteBine\n" ..
+                                            "]]--\n\n"
+                                finalContent = header .. raw
+                            else
+                                finalContent = codeSnippet
+                            end
+                            
+                            ToggleExecutorFunc(finalContent)
+                        end)
                     end
                 end)
                 return EditBtn
