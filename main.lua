@@ -157,6 +157,10 @@ utilSec:Button("Ketamine", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Ketamine/refs/heads/main/Ketamine.lua"))()
 ]])
 
+utilSec:Button("RemoteSpy Lite", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/remote-spy-lite.lua"))()
+]])
+
 utilSec:Button("Hydroxide", [[
     local owner = "Upbolt"
     local branch = "revision"
