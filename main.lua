@@ -377,12 +377,17 @@ trollSec:Button("Obby solver Gui", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MoonhookSumDev/universal-obby/main/Moonhook-tcoh-universalobby.txt"))()
 ]])
 
-trollSec:Button("Chat Art", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/chatart.lua"))()
+trollSec:Button("Gemeni Empire(Admin abuse)", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/gemini-empire.lua"))()
 ]])
 
+--not working with new chat
+--trollSec:Button("Chat Art", [[
+--    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/chatart.lua"))()
+--]])
+
 trollSec:Button("Chat Art Pro", [[
-    loadstring(game:HttpGet("https://github.com/FoarteBine/MoldovanAdmin/blob/main/scripts/chat-art-pro.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/chat-art-pro.lua"))()
 ]])
 
 trollSec:Button("Universal KillAura", [[
