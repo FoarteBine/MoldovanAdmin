@@ -432,6 +432,18 @@ flingSec:Button("Fling Gui", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/fling-gui.lua"))()
 ]])
 
+flingSec:Button("Gemini Ultimate Fling", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/gemini-ultimate-fling.lua"))()
+]])
+
+flingSec:Button("Gemini Fling Mass", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/gemini-fling-mass.lua"))()
+]])
+
+flingSec:Button("Gemini Fling Hunter", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/gemini-fling-hunter.lua"))()
+]])
+
 flingSec:Button("Grok Fling", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/fling-grok.lua"))()
 ]])
