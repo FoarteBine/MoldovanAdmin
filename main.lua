@@ -273,6 +273,10 @@ placesSec:Button("Rizz tower", [[
     loadstring(game:HttpGet("https://rawscripts.net/raw/HUG-Rizz-Tower-Anti-Carry-and-Auras-63693"))()
 ]])
 
+placesSec:Button("Bring Chat Back Sign Heck", [[
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-chat-back-sign-heck.lua'))()
+]])
+
 placesSec:Button("Server Admin", [[
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/server-admin-antiafk.lua'))()
 ]])
