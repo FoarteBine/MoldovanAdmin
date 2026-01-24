@@ -384,6 +384,10 @@ trollSec:Button("Ac6 FE Music", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Roblox-HttpSpy/my-Garbage/refs/heads/main/FeMusicExploit.lua"))()
 ]])
 
+trollSec:Button("Alkek Chat Bypass", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/alkek-chat-bypass.lua"))()
+]])
+
 trollSec:Button("Emote bar", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua"))()
 ]])
