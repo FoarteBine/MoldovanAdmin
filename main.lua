@@ -79,6 +79,10 @@ utilSec:Button("Server Hop", [[
     serverHop()
 ]])
 
+utilSec:Button("Auto Rejoin", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/auto-rejoin.lua"))()
+]])
+
 utilSec:Button("Server Browser", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Syr0nix/RedFoxServerBowser/refs/heads/main/Mainlua"))()
 ]])
