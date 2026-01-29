@@ -1,5 +1,6 @@
 local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
+local HttpService = game:GetService("HttpService")
 
 local loopActive = false
 local currentText = "c00l hack"
@@ -9,7 +10,15 @@ local EXCLUDED_NAMES = {
     ["Super_AntiOnlyCanSee"] = true,
 }
 
+local function packText(text)
+    local data = { text = text }
+    local json = HttpService:JSONEncode(data)
+    return buffer.fromstring(json)
+end
+
 local function applyToSigns(text, force)
+    local packedPayload = packText(text)
+
     for _, player in pairs(Players:GetPlayers()) do
         if player ~= Players.LocalPlayer and not EXCLUDED_NAMES[player.Name] then
             local containers = {player.Character, player:FindFirstChild("Backpack")}
@@ -17,8 +26,13 @@ local function applyToSigns(text, force)
                 if container then
                     for _, obj in pairs(container:GetDescendants()) do
                         if obj:IsA("RemoteEvent") and obj.Name == "Change" and obj.Parent.Name == "StuddedSign" then
+                            
+                            local function fire()
+                                obj:FireServer(packedPayload)
+                            end
+
                             if force then
-                                task.spawn(function() pcall(function() obj:FireServer(text) end) end)
+                                task.spawn(function() pcall(fire) end)
                             else
                                 local foundText = nil
                                 local surfaceGui = obj.Parent:FindFirstChildWhichIsA("SurfaceGui", true)
@@ -26,8 +40,9 @@ local function applyToSigns(text, force)
                                     local label = surfaceGui:FindFirstChildWhichIsA("TextLabel", true)
                                     if label then foundText = label.Text end
                                 end
+                                
                                 if foundText ~= text then
-                                    task.spawn(function() pcall(function() obj:FireServer(text) end) end)
+                                    task.spawn(function() pcall(fire) end)
                                 end
                             end
                         end
@@ -39,7 +54,7 @@ local function applyToSigns(text, force)
 end
 
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "SignHeck_Studded"
+ScreenGui.Name = "SignHeck_Studded_Fixed"
 ScreenGui.Parent = CoreGui
 ScreenGui.ResetOnSpawn = false
 
@@ -55,7 +70,7 @@ Instance.new("UICorner", MainFrame)
 
 local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, 0, 0, 35)
-Title.Text = "STUDDED SIGN HECK"
+Title.Text = "STUDDED SIGN HECK (FIXED)"
 Title.TextColor3 = Color3.new(1, 1, 1)
 Title.BackgroundTransparency = 1
 Title.Font = Enum.Font.GothamBold
