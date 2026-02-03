@@ -293,9 +293,9 @@ placesSec:Button("Rizz tower", [[
 --    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-chat-back-filter-bypass.lua'))()
 --]])
 
-placesSec:Button("Bring Chat Back Sign Heck v3", [[
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-chat-back-sign-heck-v3.lua'))()
-]])
+--placesSec:Button("Bring Chat Back Sign Heck v3", [[
+--    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-chat-back-sign-heck-v3.lua'))()
+--]])
 
 placesSec:Button("SignBlox Sign Heck", [[
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/signblox.lua'))()
