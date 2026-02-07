@@ -400,6 +400,10 @@ trollSec:Button("Alkek Chat Bypass", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/alkek-chat-bypass.lua"))()
 ]])
 
+trollSec:Button("Alkek Codexum(ALKEK ONLY)", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/codexum.lua"))()
+]])
+
 trollSec:Button("Emote bar", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua"))()
 ]])
