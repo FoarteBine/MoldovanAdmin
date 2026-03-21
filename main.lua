@@ -186,7 +186,7 @@ utilSec:Button("Free Gameasses", [[
 ]])
 
 utilSec:Button("Free Dev Gameasses", [[
-    loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Free-Gamepasses-Not-Work-All-Game-Only-Trash-Game-45310"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/free-dev-gamepass.lua"))()
 ]])
 
 utilSec:Button("Keyboard", [[
