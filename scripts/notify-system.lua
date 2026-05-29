@@ -1,5 +1,6 @@
 local CoreGui = game:GetService("CoreGui")
 local TweenService = game:GetService("TweenService")
+local TextService = game:GetService("TextService")
 
 local gui = CoreGui:FindFirstChild("NotifyGui") or Instance.new("ScreenGui")
 gui.Name = "NotifyGui"
@@ -45,8 +46,18 @@ local function Notify(title, text, ntype, duration)
     local scheme = colors[ntype] or colors.info
     local isClosing = false
 
+    local font = Enum.Font.BuilderSans
+    local textSize = 14
+    local maxTextWidth = 360 - 32
+
+    local success, textBounds = pcall(function()
+        return TextService:GetTextSize(tostring(text), textSize, font, Vector2.new(maxTextWidth, math.huge))
+    end)
+    
+    local calculatedHeight = success and textBounds.Y or 20
+
     local frame = Instance.new("Frame")
-    frame.Size = UDim2.new(1, 0, 0, 100)
+    frame.Size = UDim2.new(1, 0, 0, calculatedHeight + 54)
     frame.BackgroundColor3 = scheme.bg
     frame.BackgroundTransparency = 0.05
     frame.BorderSizePixel = 0
@@ -76,7 +87,7 @@ local function Notify(title, text, ntype, duration)
     titleLabel.Parent = frame
 
     local textLabel = Instance.new("TextLabel")
-    textLabel.Size = UDim2.new(1, -32, 0, 0)
+    textLabel.Size = UDim2.new(1, -32, 0, calculatedHeight)
     textLabel.Position = UDim2.new(0, 16, 0, 38)
     textLabel.BackgroundTransparency = 1
     textLabel.TextWrapped = true
@@ -84,8 +95,8 @@ local function Notify(title, text, ntype, duration)
     textLabel.TextXAlignment = Enum.TextXAlignment.Left
     textLabel.Text = tostring(text)
     textLabel.TextColor3 = Color3.fromRGB(225, 225, 230)
-    textLabel.Font = Enum.Font.BuilderSans
-    textLabel.TextSize = 14
+    textLabel.Font = font
+    textLabel.TextSize = textSize
     textLabel.LineHeight = 1.15
     textLabel.Parent = frame
 
@@ -99,14 +110,6 @@ local function Notify(title, text, ntype, duration)
     closeBtn.TextSize = 22
     closeBtn.TextYAlignment = Enum.TextYAlignment.Center
     closeBtn.Parent = frame
-
-    local textHeight = textLabel.TextBounds.Y
-    if textHeight == 0 then
-        task.wait()
-        textHeight = textLabel.TextBounds.Y
-    end
-
-    frame.Size = UDim2.new(1, 0, 0, math.max(64, textHeight + 54))
 
     local function close()
         if isClosing then return end
