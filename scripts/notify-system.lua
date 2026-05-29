@@ -1,6 +1,5 @@
 local CoreGui = game:GetService("CoreGui")
 local TweenService = game:GetService("TweenService")
-local UserInputService = game:GetService("UserInputService")
 
 local gui = CoreGui:FindFirstChild("NotifyGui") or Instance.new("ScreenGui")
 gui.Name = "NotifyGui"
@@ -47,7 +46,7 @@ local function Notify(title, text, ntype, duration)
     local isClosing = false
 
     local frame = Instance.new("Frame")
-    frame.Size = UDim2.new(1, 0, 0, 80)
+    frame.Size = UDim2.new(1, 0, 0, 100)
     frame.BackgroundColor3 = scheme.bg
     frame.BackgroundTransparency = 0.05
     frame.BorderSizePixel = 0
@@ -101,7 +100,13 @@ local function Notify(title, text, ntype, duration)
     closeBtn.TextYAlignment = Enum.TextYAlignment.Center
     closeBtn.Parent = frame
 
-    frame.Size = UDim2.new(1, 0, 0, textLabel.TextBounds.Y + 54)
+    local textHeight = textLabel.TextBounds.Y
+    if textHeight == 0 then
+        task.wait()
+        textHeight = textLabel.TextBounds.Y
+    end
+
+    frame.Size = UDim2.new(1, 0, 0, math.max(64, textHeight + 54))
 
     local function close()
         if isClosing then return end
