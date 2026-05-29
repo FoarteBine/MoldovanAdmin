@@ -95,8 +95,9 @@ end
 
 function Luxware.CreateWindow(titleName)
     local ScreenGui = Create("ScreenGui", {
-        Name = "Luxware_" .. math.random(1000,9999),
+        Name = "MD_" .. math.random(1000,9999),
         Parent = CoreGui,
+        Enabled = false,
         ResetOnSpawn = false,
         ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     })
