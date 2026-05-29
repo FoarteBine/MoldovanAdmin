@@ -25,9 +25,6 @@ local utilSec = utilTab:Section("UTILITY")
 local playerSec = utilTab:Section("PLAYER")
 local placesSec = utilTab:Section("PLACES")
 
---TUBERS93 PRANK//VISUAL
---loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/tubers93-visual.lua"))()
-
 --MOBILE ALT BUTTON
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/mobile-button.lua"))()
 
@@ -116,6 +113,10 @@ utilSec:Button("Clear Ws", [[
 
 utilSec:Button("Cmdbar2", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/cmdbar2.lua"))()
+]])
+
+utilSec:Button("Nameless Admin New", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/nameless-admin-reworked.lua"))()
 ]])
 
 utilSec:Button("Infinity Yield", [[
@@ -275,26 +276,6 @@ placesSec:Button("Rizz tower", [[
     loadstring(game:HttpGet("https://rawscripts.net/raw/HUG-Rizz-Tower-Anti-Carry-and-Auras-63693"))()
 ]])
 
---placesSec:Button("Bring Chat Back Sign Heck", [[
---    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-chat-back-sign-heck.lua'))()
---]])
-
---placesSec:Button("Bring Chat Back Sign Heck v2", [[
---    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-chat-back-sign-heck-v2.lua'))()
---]])
-
---placesSec:Button("Bring Chat Back Sign Heck v2 Filter Bypass", [[
---    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-chat-back-sign-heck-filterbypass.lua'))()
---]])
-
---placesSec:Button("Bring Chat Back Filter Bypass", [[
---    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-chat-back-filter-bypass.lua'))()
---]])
-
---placesSec:Button("Bring Chat Back Sign Heck v3", [[
---    loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/bring-chat-back-sign-heck-v3.lua'))()
---]])
-
 placesSec:Button("SignBlox Sign Heck", [[
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/signblox.lua'))()
 ]])
@@ -363,7 +344,7 @@ visualSec:Button("Hitbox Expander", [[
 ]])
 
 visualSec:Button("Hitbox Expander GUI", [[
-    loadstring(game:HttpGet("https://rscripts.net/raw/universal-hitbox-v10-open-source_1733529165192_LIstHcFlfK.txt",true))()
+    loadstring(game:HttpGet("https://rscripts.net/raw/universal-hitbox-v11-open-source_1759699792647_mQ8bYoeTyy.txt",true))()
 ]])
 
 visualSec:Button("Bring All(CLIENT)", [[
@@ -413,11 +394,6 @@ trollSec:Button("Obby solver Gui", [[
 trollSec:Button("Gemeni Empire(Admin abuse)", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/gemini-empire.lua"))()
 ]])
-
---not working with new chat
---trollSec:Button("Chat Art", [[
---    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/chatart.lua"))()
---]])
 
 trollSec:Button("Chat Art Pro", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/chat-art-pro.lua"))()
@@ -643,18 +619,6 @@ backdoorSec:Button("Lalol hub", [[
 
 backdoorSec:Button("Frakture", [[
     loadstring(game:HttpGet('https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/frakture.lua'))()
-]])
-
-backdoorSec:Button("Backdoor 1", [[
-    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/TempUserIdk18/robloxscripts/refs/heads/main/starlight.lua"))()
-]])
-
-backdoorSec:Button("Backdoor 2", [[
-    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/Backdoor_ss_2.txt"))()
-]])
-
-backdoorSec:Button("Backdoor 3", [[
-    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/Backdoor_ss_3.txt"))()
 ]])
 
 -- ==== 📜 CREDITS ====
