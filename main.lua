@@ -30,7 +30,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAd
 
 --NOTIFY SYSTEM
 local notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/notify-system.lua"))()
-notify.Notify("MoldovanAdmin", "The script has been loaded successfully. The real author of the script is FoarteBine. Alt button to show/hide.", "success", 5)
+notify.Notify("MoldovanAdmin", "MD loaded! Alt button to show/hide.", "success", 5)
 
 utilSec:Button("Rejoin", [[
     local TeleportService = game:GetService("TeleportService")
@@ -121,6 +121,10 @@ utilSec:Button("Nameless Admin New", [[
 
 utilSec:Button("Infinity Yield", [[
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+]])
+
+utilSec:Button("Novoline", [[
+	loadstring(game:HttpGet("https://novoline.pro"))()
 ]])
 
 utilSec:Button("Ghost hub", [[
