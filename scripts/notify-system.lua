@@ -1,5 +1,6 @@
 local CoreGui = game:GetService("CoreGui")
 local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
 
 local gui = CoreGui:FindFirstChild("NotifyGui") or Instance.new("ScreenGui")
 gui.Name = "NotifyGui"
@@ -20,70 +21,126 @@ layout.VerticalAlignment = Enum.VerticalAlignment.Top
 layout.Parent = holder
 
 local colors = {
-    info = Color3.fromRGB(60, 120, 255),
-    success = Color3.fromRGB(70, 200, 120),
-    warning = Color3.fromRGB(255, 170, 60),
-    error = Color3.fromRGB(255, 80, 80)
+    info = {
+        bg = Color3.fromRGB(30, 34, 42),
+        accent = Color3.fromRGB(168, 218, 220)
+    },
+    success = {
+        bg = Color3.fromRGB(26, 36, 33),
+        accent = Color3.fromRGB(167, 240, 186)
+    },
+    warning = {
+        bg = Color3.fromRGB(36, 34, 26),
+        accent = Color3.fromRGB(255, 224, 130)
+    },
+    error = {
+        bg = Color3.fromRGB(38, 27, 27),
+        accent = Color3.fromRGB(255, 179, 174)
+    }
 }
 
 local function Notify(title, text, ntype, duration)
     ntype = ntype or "info"
     duration = duration or 3
+    
+    local scheme = colors[ntype] or colors.info
+    local isClosing = false
 
     local frame = Instance.new("Frame")
-    frame.Size = UDim2.new(1, -10, 0, 80)
-    frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    frame.Size = UDim2.new(1, 0, 0, 80)
+    frame.BackgroundColor3 = scheme.bg
     frame.BackgroundTransparency = 0.05
     frame.BorderSizePixel = 0
-    frame.Position = UDim2.new(1, 0, 0, 0)
+    frame.Position = UDim2.new(1, 50, 0, 0)
+    frame.ClipsDescendants = true
     frame.Parent = holder
 
-    local stroke = Instance.new("UIStroke")
-    stroke.Color = colors[ntype] or colors.info
-    stroke.Thickness = 2
-    stroke.Parent = frame
-
     local corner = Instance.new("UICorner")
-    corner.CornerRadius = UDim.new(0, 12)
+    corner.CornerRadius = UDim.new(0, 16)
     corner.Parent = frame
 
+    local stroke = Instance.new("UIStroke")
+    stroke.Color = scheme.accent
+    stroke.Thickness = 1
+    stroke.Transparency = 0.85
+    stroke.Parent = frame
+
     local titleLabel = Instance.new("TextLabel")
-    titleLabel.Size = UDim2.new(1, -20, 0, 26)
-    titleLabel.Position = UDim2.new(0, 10, 0, 8)
+    titleLabel.Size = UDim2.new(1, -56, 0, 24)
+    titleLabel.Position = UDim2.new(0, 16, 0, 12)
     titleLabel.BackgroundTransparency = 1
     titleLabel.Text = tostring(title)
-    titleLabel.TextColor3 = Color3.new(1,1,1)
-    titleLabel.Font = Enum.Font.GothamBold
+    titleLabel.TextColor3 = scheme.accent
+    titleLabel.Font = Enum.Font.BuilderSansBold
     titleLabel.TextSize = 16
     titleLabel.TextXAlignment = Enum.TextXAlignment.Left
     titleLabel.Parent = frame
 
     local textLabel = Instance.new("TextLabel")
-    textLabel.Size = UDim2.new(1, -20, 0, 36)
-    textLabel.Position = UDim2.new(0, 10, 0, 36)
+    textLabel.Size = UDim2.new(1, -32, 0, 0)
+    textLabel.Position = UDim2.new(0, 16, 0, 38)
     textLabel.BackgroundTransparency = 1
     textLabel.TextWrapped = true
     textLabel.TextYAlignment = Enum.TextYAlignment.Top
     textLabel.TextXAlignment = Enum.TextXAlignment.Left
     textLabel.Text = tostring(text)
-    textLabel.TextColor3 = Color3.fromRGB(220,220,220)
-    textLabel.Font = Enum.Font.Gotham
+    textLabel.TextColor3 = Color3.fromRGB(225, 225, 230)
+    textLabel.Font = Enum.Font.BuilderSans
     textLabel.TextSize = 14
+    textLabel.LineHeight = 1.15
     textLabel.Parent = frame
 
-    frame.Size = UDim2.new(1, -10, 0, textLabel.TextBounds.Y + 52)
+    local closeBtn = Instance.new("TextButton")
+    closeBtn.Size = UDim2.new(0, 24, 0, 24)
+    closeBtn.Position = UDim2.new(1, -36, 0, 12)
+    closeBtn.BackgroundTransparency = 1
+    closeBtn.Text = "×"
+    closeBtn.TextColor3 = Color3.fromRGB(200, 200, 205)
+    closeBtn.Font = Enum.Font.BuilderSans
+    closeBtn.TextSize = 22
+    closeBtn.TextYAlignment = Enum.TextYAlignment.Center
+    closeBtn.Parent = frame
 
-    TweenService:Create(frame, TweenInfo.new(0.35, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
+    frame.Size = UDim2.new(1, 0, 0, textLabel.TextBounds.Y + 54)
+
+    local function close()
+        if isClosing then return end
+        isClosing = true
+        
+        TweenService:Create(frame, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+            Position = UDim2.new(1, 50, 0, 0),
+            BackgroundTransparency = 1
+        }):Play()
+        
+        TweenService:Create(stroke, TweenInfo.new(0.15), {Transparency = 1}):Play()
+        TweenService:Create(titleLabel, TweenInfo.new(0.15), {TextTransparency = 1}):Play()
+        TweenService:Create(textLabel, TweenInfo.new(0.15), {TextTransparency = 1}):Play()
+        TweenService:Create(closeBtn, TweenInfo.new(0.15), {TextTransparency = 1}):Play()
+        
+        task.wait(0.25)
+        frame:Destroy()
+    end
+
+    closeBtn.MouseEnter:Connect(function()
+        if isClosing then return end
+        TweenService:Create(closeBtn, TweenInfo.new(0.15), {TextColor3 = scheme.accent}):Play()
+    end)
+
+    closeBtn.MouseLeave:Connect(function()
+        if isClosing then return end
+        TweenService:Create(closeBtn, TweenInfo.new(0.15), {TextColor3 = Color3.fromRGB(200, 200, 205)}):Play()
+    end)
+
+    closeBtn.MouseButton1Click:Connect(close)
+
+    TweenService:Create(frame, TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
         Position = UDim2.new(0, 0, 0, 0)
     }):Play()
 
     task.delay(duration, function()
-        TweenService:Create(frame, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
-            Position = UDim2.new(1, 40, 0, 0),
-            BackgroundTransparency = 1
-        }):Play()
-        task.wait(0.35)
-        frame:Destroy()
+        if frame and frame.Parent then
+            close()
+        end
     end)
 end
 
