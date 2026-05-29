@@ -38,7 +38,7 @@ utilSec:Button("Rejoin", [[
     TeleportService:Teleport(game.PlaceId, Players.LocalPlayer)
 ]])
 
-utilSec:Button("Quit", [[
+utilSec:Button("Quit Game", [[
     game:Shutdown()
 ]])
 
@@ -79,7 +79,7 @@ utilSec:Button("Auto Rejoin", [[
 ]])
 
 utilSec:Button("Server Browser", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Syr0nix/RedFoxServerBowser/refs/heads/main/Mainlua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RealBatu20/AI-Scripts-2025/refs/heads/main/ServerBrowserImproved.lua"))()
 ]])
 
 utilSec:Button("Instant pp", [[
