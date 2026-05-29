@@ -41,6 +41,10 @@ utilSec:Button("Rejoin", [[
     TeleportService:Teleport(game.PlaceId, Players.LocalPlayer)
 ]])
 
+utilSec:Button("Quit", [[
+    game:Shutdown()
+]])
+
 utilSec:Button("Server Hop", [[
     local PlaceId = game.PlaceId
     local JobId = game.JobId
