@@ -103,7 +103,7 @@ function Luxware.CreateWindow(titleName)
     })
 
     --// Toggle UI Keybind
-    local UIVisible = true
+    local UIVisible = false
     UserInputService.InputBegan:Connect(function(input, processed)
         if not processed and (input.KeyCode == Enum.KeyCode.LeftAlt or input.KeyCode == Enum.KeyCode.RightAlt) then
             UIVisible = not UIVisible
