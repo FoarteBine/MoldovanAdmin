@@ -8,7 +8,7 @@ task.spawn(function()
 
     local function findLuxwareGui()
         for _, v in ipairs(CoreGui:GetChildren()) do
-            if v:IsA("ScreenGui") and string.find(v.Name, "Luxware") then
+            if v:IsA("ScreenGui") and string.find(v.Name, "MD") then
                 return v
             end
         end
