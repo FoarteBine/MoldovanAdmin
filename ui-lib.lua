@@ -1,3 +1,8 @@
+--[[ 
+    LUXWARE REBORN - MATERIAL YOU + EXECUTOR 
+    No Icons, Pure Animation, Infinite Scrolling
+]]
+
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local CoreGui = game:GetService("CoreGui")
@@ -7,6 +12,7 @@ local Mouse = Players.LocalPlayer:GetMouse()
 
 local Luxware = {}
 
+--// Theme Configuration
 local Theme = {
     Background = Color3.fromRGB(15, 15, 20),
     Sidebar = Color3.fromRGB(20, 20, 25),
@@ -14,14 +20,16 @@ local Theme = {
     ElementHover = Color3.fromRGB(40, 40, 45),
     Text = Color3.fromRGB(240, 240, 240),
     SubText = Color3.fromRGB(150, 150, 150),
-    Accent = Color3.fromRGB(168, 199, 250),
+    Accent = Color3.fromRGB(168, 199, 250), -- Pastel Blue Material
     Red = Color3.fromRGB(255, 100, 100),
     EditorBG = Color3.fromRGB(10, 10, 12)
 }
 
+--// Global Ref for Executor
 local ExecutorBoxRef = nil
 local ToggleExecutorFunc = nil
 
+--// Utility: Create Instance
 local function Create(class, properties)
     local instance = Instance.new(class)
     for k, v in pairs(properties) do
@@ -30,6 +38,7 @@ local function Create(class, properties)
     return instance
 end
 
+--// Utility: Ripple Effect
 local function Ripple(object)
     spawn(function()
         local circle = Create("Frame", {
@@ -58,6 +67,7 @@ local function Ripple(object)
     end)
 end
 
+--// Utility: Dragging
 local function MakeDraggable(handle, target)
     local dragging, dragInput, dragStart, startPos
     handle.InputBegan:Connect(function(input)
@@ -92,6 +102,7 @@ function Luxware.CreateWindow(titleName)
         ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     })
 
+    --// Toggle UI Keybind
     local UIVisible = false
     UserInputService.InputBegan:Connect(function(input, processed)
         if not processed and (input.KeyCode == Enum.KeyCode.LeftAlt or input.KeyCode == Enum.KeyCode.RightAlt) then
@@ -100,6 +111,7 @@ function Luxware.CreateWindow(titleName)
         end
     end)
 
+    --// Main Frame
     local Main = Create("Frame", {
         Parent = ScreenGui,
         Size = UDim2.new(0, 650, 0, 420),
@@ -109,6 +121,7 @@ function Luxware.CreateWindow(titleName)
     })
     Create("UICorner", {Parent = Main, CornerRadius = UDim.new(0, 16)})
     
+    --// Shadow (Glow)
     local Shadow = Create("ImageLabel", {
         Parent = Main,
         Image = "rbxassetid://5028857472",
@@ -120,6 +133,7 @@ function Luxware.CreateWindow(titleName)
         ZIndex = -1
     })
 
+    --// Sidebar
     local Sidebar = Create("Frame", {
         Parent = Main,
         Size = UDim2.new(0, 180, 1, 0),
@@ -127,6 +141,7 @@ function Luxware.CreateWindow(titleName)
     })
     Create("UICorner", {Parent = Sidebar, CornerRadius = UDim.new(0, 16)})
     
+    -- Fix corner overlap
     Create("Frame", {
         Parent = Sidebar,
         Size = UDim2.new(0, 20, 1, 0),
@@ -173,6 +188,7 @@ function Luxware.CreateWindow(titleName)
 
     MakeDraggable(Sidebar, Main)
 
+    --// EXECUTOR SYSTEM
     local ExecFrame = Create("Frame", {
         Parent = ScreenGui,
         Size = UDim2.new(0, 400, 0, 250),
@@ -345,6 +361,7 @@ function Luxware.CreateWindow(titleName)
         end
     end
 
+    --// TABS Logic
     local Tabs = {}
     local FirstTab = true
 
@@ -464,17 +481,21 @@ function Luxware.CreateWindow(titleName)
             
             local Items = {}
 
+            -- Вспомогательная функция для получения кода (с обходом кэша через nocache)
             local function getRawScript(loadstringCode)
                 local url = loadstringCode:match('game:HttpGet%s*%(?%s*["\'](.-)["\']')
                 if url then
                     local success, result = pcall(function()
-                        return game:HttpGet(url)
+                        local separator = url:find("%?") and "&" or "?"
+                        local freshUrl = url .. separator .. "nocache=" .. math.random(1, 100000)
+                        return game:HttpGet(freshUrl)
                     end)
                     if success then return result end
                 end
                 return loadstringCode
             end
 
+            -- Окно детальной информации
             local function CreateInfoWindow(title, infoText)
                 local InfoFrame = Create("TextButton", {
                     Parent = ScreenGui,
@@ -567,12 +588,15 @@ function Luxware.CreateWindow(titleName)
                 end)
             end
 
-            local function AddEditBtn(parentFrame, codeSnippet, hasInfo)
-                local offset = hasInfo and -70 or -35
+            -- Генератор кнопки редактирования (✏️)
+            local function AddEditBtn(parentFrame, codeSnippet, hasInfo, customYOffset)
+                local xOffset = hasInfo and -70 or -35
+                local yOffset = customYOffset or -15
+                
                 local EditBtn = Create("TextButton", {
                     Parent = parentFrame,
                     Size = UDim2.new(0, 30, 0, 30),
-                    Position = UDim2.new(1, offset, 0.5, -15),
+                    Position = UDim2.new(1, xOffset, 0.5, yOffset),
                     BackgroundColor3 = Theme.Background,
                     Text = "✏️",
                     TextSize = 14,
@@ -586,13 +610,13 @@ function Luxware.CreateWindow(titleName)
                     
                     TweenService:Create(EditBtn, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
                         Size = UDim2.new(0, 26, 0, 26),
-                        Position = UDim2.new(1, offset + 2, 0.5, -13)
+                        Position = UDim2.new(1, xOffset + 2, 0.5, yOffset + 2)
                     }):Play()
                     
                     task.delay(0.1, function()
                         TweenService:Create(EditBtn, TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
                             Size = UDim2.new(0, 30, 0, 30),
-                            Position = UDim2.new(1, offset, 0.5, -15)
+                            Position = UDim2.new(1, xOffset, 0.5, yOffset)
                         }):Play()
                     end)
 
@@ -619,12 +643,15 @@ function Luxware.CreateWindow(titleName)
                 return EditBtn
             end
 
-            local function AddInfoBtn(parentFrame, title, infoText)
+            -- Генератор кнопки инфо (ℹ️)
+            local function AddInfoBtn(parentFrame, title, infoText, customYOffset)
                 if not infoText or infoText == "" then return nil end
+                local yOffset = customYOffset or -15
+                
                 local InfoBtn = Create("TextButton", {
                     Parent = parentFrame,
                     Size = UDim2.new(0, 30, 0, 30),
-                    Position = UDim2.new(1, -35, 0.5, -15),
+                    Position = UDim2.new(1, -35, 0.5, yOffset),
                     BackgroundColor3 = Theme.Background,
                     Text = "ℹ️",
                     TextSize = 14,
@@ -767,8 +794,8 @@ function Luxware.CreateWindow(titleName)
                 Create("UICorner", {Parent = Dot, CornerRadius = UDim.new(1, 0)})
 
                 local snippet = "-- Toggle: " .. text .. "\nlocal state = true -- or false\nprint('Toggle is now:', state)"
-                AddInfoBtn(TogFrame, text, infoText)
-                AddEditBtn(TogFrame, snippet, hasInfo)
+                AddInfoBtn(TogFrame, text, infoText, -11)
+                AddEditBtn(TogFrame, snippet, hasInfo, -11)
 
                 TogFrame.MouseButton1Click:Connect(function()
                     Toggled = not Toggled
@@ -841,8 +868,8 @@ function Luxware.CreateWindow(titleName)
                 })
 
                 local snippet = string.format("-- Slider: %s\nlocal val = 16", text)
-                AddInfoBtn(SlideFrame, text, infoText)
-                AddEditBtn(SlideFrame, snippet, hasInfo)
+                AddInfoBtn(SlideFrame, text, infoText, -15)
+                AddEditBtn(SlideFrame, snippet, hasInfo, -15)
 
                 local dragging = false
                 local function Update(input)
