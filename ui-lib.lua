@@ -194,12 +194,13 @@ function Luxware.CreateWindow(titleName)
         Size = UDim2.new(0, 400, 0, 250),
         Position = UDim2.new(1, -420, 1, -270),
         BackgroundColor3 = Theme.Background,
-        Visible = false,
+        Visible = false, -- Hidden by default
         ClipsDescendants = true
     })
     Create("UICorner", {Parent = ExecFrame, CornerRadius = UDim.new(0, 12)})
     MakeDraggable(ExecFrame, ExecFrame)
 
+    -- Editor Title
     local ExecTitle = Create("TextLabel", {
         Parent = ExecFrame,
         Size = UDim2.new(1, 0, 0, 30),
@@ -211,6 +212,7 @@ function Luxware.CreateWindow(titleName)
         BackgroundTransparency = 1
     })
 
+    -- Editor Box
     local EditorScroll = Create("ScrollingFrame", {
         Parent = ExecFrame,
         Size = UDim2.new(1, -20, 1, -70),
@@ -236,8 +238,9 @@ function Luxware.CreateWindow(titleName)
         ClearTextOnFocus = false,
         AutomaticSize = Enum.AutomaticSize.Y
     })
-    ExecutorBoxRef = SourceBox
+    ExecutorBoxRef = SourceBox -- Save ref
 
+    -- Run Button
     local RunBtn = Create("TextButton", {
         Parent = ExecFrame,
         Size = UDim2.new(0, 80, 0, 25),
@@ -260,10 +263,11 @@ function Luxware.CreateWindow(titleName)
         end
     end)
 
+    -- Copy Button
     local CopyBtn = Create("TextButton", {
         Parent = ExecFrame,
         Size = UDim2.new(0, 80, 0, 25),
-        Position = UDim2.new(1, -175, 1, -30),
+        Position = UDim2.new(1, -175, 1, -30), -- Смещаем левее кнопки Execute
         BackgroundColor3 = Theme.Element,
         Text = "Copy Source",
         Font = Enum.Font.GothamBold,
@@ -272,6 +276,7 @@ function Luxware.CreateWindow(titleName)
     })
     Create("UICorner", {Parent = CopyBtn, CornerRadius = UDim.new(0, 6)})
 
+    -- Логика копирования
     CopyBtn.MouseButton1Click:Connect(function()
         Ripple(CopyBtn)
         if ExecutorBoxRef and ExecutorBoxRef.Text ~= "" then
@@ -295,6 +300,7 @@ function Luxware.CreateWindow(titleName)
         end
     end)
 
+    -- FAB (Floating Action Button)
     local FAB = Create("TextButton", {
         Parent = ScreenGui,
         Size = UDim2.new(0, 50, 0, 50),
@@ -344,6 +350,7 @@ function Luxware.CreateWindow(titleName)
     
     ToggleExecutorFunc = function(codeSnippet)
         if not ExecOpen then
+            -- Open it first
             ExecOpen = true
             ExecFrame.Visible = true
             ExecFrame.Size = UDim2.new(0, 0, 0, 0)
@@ -368,6 +375,7 @@ function Luxware.CreateWindow(titleName)
     local Window = {}
     
     function Window:Tab(name)
+        -- Tab Button
         local TabBtn = Create("TextButton", {
             Parent = TabContainer,
             Size = UDim2.new(1, -10, 0, 40),
@@ -390,6 +398,7 @@ function Luxware.CreateWindow(titleName)
             TextXAlignment = Enum.TextXAlignment.Left
         })
         
+        -- Indicator
         local Indicator = Create("Frame", {
             Parent = TabBtn,
             Size = UDim2.new(0, 4, 0, 20),
@@ -399,6 +408,7 @@ function Luxware.CreateWindow(titleName)
         })
         Create("UICorner", {Parent = Indicator, CornerRadius = UDim.new(1,0)})
 
+        -- Page
         local Page = Create("ScrollingFrame", {
             Parent = Content,
             Size = UDim2.new(1, 0, 1, 0),
@@ -481,122 +491,25 @@ function Luxware.CreateWindow(titleName)
             
             local Items = {}
 
-            -- Вспомогательная функция для получения кода (с обходом кэша через nocache)
+            -- Вспомогательная функция для получения кода из loadstring
             local function getRawScript(loadstringCode)
+                -- Паттерн ищет ссылку внутри game:HttpGet("ссылка") или game:HttpGet'ссылка'
                 local url = loadstringCode:match('game:HttpGet%s*%(?%s*["\'](.-)["\']')
                 if url then
                     local success, result = pcall(function()
-                        local separator = url:find("%?") and "&" or "?"
-                        local freshUrl = url .. separator .. "nocache=" .. math.random(1, 100000)
-                        return game:HttpGet(freshUrl)
+                        return game:HttpGet(url)
                     end)
                     if success then return result end
                 end
-                return loadstringCode
+                return loadstringCode -- Возвращаем оригинал, если не нашли ссылку или ошибка
             end
 
-            -- Окно детальной информации
-            local function CreateInfoWindow(title, infoText)
-                local InfoFrame = Create("TextButton", {
-                    Parent = ScreenGui,
-                    Size = UDim2.new(0, 240, 0, 30),
-                    Position = UDim2.new(0, Mouse.X + 15, 0, Mouse.Y - 15),
-                    BackgroundColor3 = Theme.Sidebar,
-                    Text = "",
-                    AutoButtonColor = false,
-                    ZIndex = 100,
-                    ClipsDescendants = true,
-                    BackgroundTransparency = 1
-                })
-                Create("UICorner", {Parent = InfoFrame, CornerRadius = UDim.new(0, 10)})
-                local Stroke = Create("UIStroke", {
-                    Parent = InfoFrame,
-                    Color = Theme.Accent,
-                    Thickness = 1.5,
-                    Transparency = 1
-                })
-
-                local Header = Create("Frame", {
-                    Parent = InfoFrame,
-                    Size = UDim2.new(1, 0, 0, 28),
-                    BackgroundTransparency = 1
-                })
-                Create("TextLabel", {
-                    Parent = Header,
-                    Text = "  " .. title,
-                    Font = Enum.Font.GothamBold,
-                    TextSize = 12,
-                    TextColor3 = Theme.Accent,
-                    Size = UDim2.new(1, -30, 1, 0),
-                    BackgroundTransparency = 1,
-                    TextXAlignment = Enum.TextXAlignment.Left
-                })
-
-                local ContentLabel = Create("TextLabel", {
-                    Parent = InfoFrame,
-                    Text = infoText,
-                    Font = Enum.Font.Gotham,
-                    TextSize = 12,
-                    TextColor3 = Theme.Text,
-                    Size = UDim2.new(1, -20, 0, 0),
-                    Position = UDim2.new(0, 10, 0, 32),
-                    BackgroundTransparency = 1,
-                    TextXAlignment = Enum.TextXAlignment.Left,
-                    TextYAlignment = Enum.TextYAlignment.Top,
-                    RichText = true,
-                    TextWrapped = true,
-                    AutomaticSize = Enum.AutomaticSize.Y
-                })
-
-                ContentLabel:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
-                    local targetHeight = ContentLabel.AbsoluteSize.Y + 45
-                    TweenService:Create(InfoFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-                        Size = UDim2.new(0, 240, 0, targetHeight)
-                    }):Play()
-                end)
-
-                MakeDraggable(Header, InfoFrame)
-
-                TweenService:Create(InfoFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-                    BackgroundTransparency = 0
-                }):Play()
-                TweenService:Create(Stroke, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-                    Transparency = 0
-                }):Play()
-
-                local connection
-                connection = UserInputService.InputBegan:Connect(function(input)
-                    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                        local pos = UserInputService:GetMouseLocation()
-                        local guiPos = InfoFrame.AbsolutePosition
-                        local guiSize = InfoFrame.AbsoluteSize
-                        
-                        if pos.X < guiPos.X or pos.X > (guiPos.X + guiSize.X) or pos.Y < guiPos.Y or pos.Y > (guiPos.Y + guiSize.Y) then
-                            connection:Disconnect()
-                            local closeTween = TweenService:Create(InfoFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
-                                Size = UDim2.new(0, 240, 0, 0),
-                                BackgroundTransparency = 1
-                            })
-                            TweenService:Create(Stroke, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
-                                Transparency = 1
-                            }):Play()
-                            closeTween:Play()
-                            closeTween.Completed:Wait()
-                            InfoFrame:Destroy()
-                        end
-                    end
-                end)
-            end
-
-            -- Генератор кнопки редактирования (✏️)
-            local function AddEditBtn(parentFrame, codeSnippet, hasInfo, customYOffset)
-                local xOffset = hasInfo and -70 or -35
-                local yOffset = customYOffset or -15
-                
+            -- Обновленный Helper для Edit Button
+            local function AddEditBtn(parentFrame, codeSnippet)
                 local EditBtn = Create("TextButton", {
                     Parent = parentFrame,
                     Size = UDim2.new(0, 30, 0, 30),
-                    Position = UDim2.new(1, xOffset, 0.5, yOffset),
+                    Position = UDim2.new(1, -35, 0.5, -15),
                     BackgroundColor3 = Theme.Background,
                     Text = "✏️",
                     TextSize = 14,
@@ -607,64 +520,35 @@ function Luxware.CreateWindow(titleName)
                 
                 EditBtn.MouseButton1Click:Connect(function()
                     Ripple(EditBtn)
-                    
-                    TweenService:Create(EditBtn, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-                        Size = UDim2.new(0, 26, 0, 26),
-                        Position = UDim2.new(1, xOffset + 2, 0.5, yOffset + 2)
-                    }):Play()
-                    
-                    task.delay(0.1, function()
-                        TweenService:Create(EditBtn, TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
-                            Size = UDim2.new(0, 30, 0, 30),
-                            Position = UDim2.new(1, xOffset, 0.5, yOffset)
-                        }):Play()
-                    end)
-
                     if ToggleExecutorFunc then
+                        -- Показываем текст "Loading...", пока скачивается скрипт
                         ToggleExecutorFunc("-- [ PLEASE WAIT ] --\n-- Fetching script from source...")
                         
                         task.spawn(function()
-                            local raw = codeSnippet
+                            local finalContent = ""
+                            -- Если это loadstring, пытаемся достать исходник
                             if codeSnippet:find("loadstring") and codeSnippet:find("game:HttpGet") then
-                                raw = getRawScript(codeSnippet) or codeSnippet
+                                local raw = getRawScript(codeSnippet)
+                                
+                                -- Формируем красивый заголовок
+                                local header = "--[[ \n" ..
+                                            "    SOURCE RETRIEVED SUCCESSFULLY\n" ..
+                                            "    Original Loader:\n" ..
+                                            "    " .. codeSnippet .. "\n" ..
+                                            "    ------------------------------------------\n" ..
+                                            "    This script was automatically fetched. \n" ..
+                                            "    MoldovanAdmin by FoarteBine\n" ..
+                                            "]]--\n\n"
+                                finalContent = header .. raw
+                            else
+                                finalContent = codeSnippet
                             end
                             
-                            local header = string.format([[--[[ 
-    Source: %s
-    MoldovanAdmin by FoarteBine
-]]--
-
-]], codeSnippet)
-                            
-                            ToggleExecutorFunc(header .. raw)
+                            ToggleExecutorFunc(finalContent)
                         end)
                     end
                 end)
                 return EditBtn
-            end
-
-            -- Генератор кнопки инфо (ℹ️)
-            local function AddInfoBtn(parentFrame, title, infoText, customYOffset)
-                if not infoText or infoText == "" then return nil end
-                local yOffset = customYOffset or -15
-                
-                local InfoBtn = Create("TextButton", {
-                    Parent = parentFrame,
-                    Size = UDim2.new(0, 30, 0, 30),
-                    Position = UDim2.new(1, -35, 0.5, yOffset),
-                    BackgroundColor3 = Theme.Background,
-                    Text = "ℹ️",
-                    TextSize = 14,
-                    AutoButtonColor = false,
-                    ZIndex = 5
-                })
-                Create("UICorner", {Parent = InfoBtn, CornerRadius = UDim.new(0, 6)})
-                
-                InfoBtn.MouseButton1Click:Connect(function()
-                    Ripple(InfoBtn)
-                    CreateInfoWindow(title, infoText)
-                end)
-                return InfoBtn
             end
 
             function Items:Label(text)
@@ -705,8 +589,7 @@ function Luxware.CreateWindow(titleName)
                 })
             end
 
-            function Items:Button(text, codeString, infoText)
-                local hasInfo = (infoText and infoText ~= "")
+            function Items:Button(text, codeString)
                 local BtnFrame = Create("TextButton", {
                     Parent = Container,
                     Size = UDim2.new(1, 0, 0, 42),
@@ -722,14 +605,13 @@ function Luxware.CreateWindow(titleName)
                     Font = Enum.Font.GothamMedium,
                     TextSize = 14,
                     TextColor3 = Theme.Text,
-                    Size = UDim2.new(1, hasInfo and -80 or -45, 1, 0),
+                    Size = UDim2.new(1, -40, 1, 0),
                     Position = UDim2.new(0, 15, 0, 0),
                     BackgroundTransparency = 1,
                     TextXAlignment = Enum.TextXAlignment.Left
                 })
 
-                AddInfoBtn(BtnFrame, text, infoText)
-                AddEditBtn(BtnFrame, codeString, hasInfo)
+                AddEditBtn(BtnFrame, codeString)
 
                 BtnFrame.MouseButton1Click:Connect(function()
                     Ripple(BtnFrame)
@@ -753,9 +635,8 @@ function Luxware.CreateWindow(titleName)
                 end)
             end
 
-            function Items:Toggle(text, callback, infoText)
+            function Items:Toggle(text, callback)
                 local Toggled = false
-                local hasInfo = (infoText and infoText ~= "")
                 local TogFrame = Create("TextButton", {
                     Parent = Container,
                     Size = UDim2.new(1, 0, 0, 42),
@@ -771,7 +652,7 @@ function Luxware.CreateWindow(titleName)
                     Font = Enum.Font.GothamMedium,
                     TextSize = 14,
                     TextColor3 = Theme.Text,
-                    Size = UDim2.new(1, hasInfo and -125 or -90, 1, 0),
+                    Size = UDim2.new(1, -90, 1, 0),
                     Position = UDim2.new(0, 15, 0, 0),
                     BackgroundTransparency = 1,
                     TextXAlignment = Enum.TextXAlignment.Left
@@ -780,7 +661,7 @@ function Luxware.CreateWindow(titleName)
                 local Check = Create("Frame", {
                     Parent = TogFrame,
                     Size = UDim2.new(0, 42, 0, 22),
-                    Position = UDim2.new(1, hasInfo and -120 or -85, 0.5, -11),
+                    Position = UDim2.new(1, -85, 0.5, -11),
                     BackgroundColor3 = Theme.Sidebar
                 })
                 Create("UICorner", {Parent = Check, CornerRadius = UDim.new(1, 0)})
@@ -793,9 +674,9 @@ function Luxware.CreateWindow(titleName)
                 })
                 Create("UICorner", {Parent = Dot, CornerRadius = UDim.new(1, 0)})
 
+                -- Edit Button
                 local snippet = "-- Toggle: " .. text .. "\nlocal state = true -- or false\nprint('Toggle is now:', state)"
-                AddInfoBtn(TogFrame, text, infoText, -11)
-                AddEditBtn(TogFrame, snippet, hasInfo, -11)
+                AddEditBtn(TogFrame, snippet)
 
                 TogFrame.MouseButton1Click:Connect(function()
                     Toggled = not Toggled
@@ -811,8 +692,7 @@ function Luxware.CreateWindow(titleName)
                 end)
             end
             
-            function Items:Slider(text, min, max, callback, infoText)
-                local hasInfo = (infoText and infoText ~= "")
+            function Items:Slider(text, min, max, callback)
                 local SlideFrame = Create("Frame", {
                     Parent = Container,
                     Size = UDim2.new(1, 0, 0, 60),
@@ -826,7 +706,7 @@ function Luxware.CreateWindow(titleName)
                     Font = Enum.Font.GothamMedium,
                     TextSize = 14,
                     TextColor3 = Theme.Text,
-                    Size = UDim2.new(1, hasInfo and -90 or -50, 0, 30),
+                    Size = UDim2.new(1, -50, 0, 30),
                     Position = UDim2.new(0, 15, 0, 0),
                     BackgroundTransparency = 1,
                     TextXAlignment = Enum.TextXAlignment.Left
@@ -839,14 +719,14 @@ function Luxware.CreateWindow(titleName)
                     TextSize = 14,
                     TextColor3 = Theme.Accent,
                     Size = UDim2.new(0, 40, 0, 30),
-                    Position = UDim2.new(1, hasInfo and -125 or -85, 0, 0),
+                    Position = UDim2.new(1, -85, 0, 0),
                     BackgroundTransparency = 1,
                     TextXAlignment = Enum.TextXAlignment.Right
                 })
                 
                 local BarBase = Create("Frame", {
                     Parent = SlideFrame,
-                    Size = UDim2.new(1, hasInfo and -115 or -80, 0, 4),
+                    Size = UDim2.new(1, -80, 0, 4),
                     Position = UDim2.new(0, 15, 0, 40),
                     BackgroundColor3 = Theme.Sidebar
                 })
@@ -861,15 +741,15 @@ function Luxware.CreateWindow(titleName)
                 
                 local Trigger = Create("TextButton", {
                     Parent = SlideFrame,
-                    Size = UDim2.new(1, hasInfo and -115 or -80, 0, 20),
+                    Size = UDim2.new(1, -80, 0, 20),
                     Position = UDim2.new(0, 15, 0, 32),
                     BackgroundTransparency = 1,
                     Text = ""
                 })
 
-                local snippet = string.format("-- Slider: %s\nlocal val = 16", text)
-                AddInfoBtn(SlideFrame, text, infoText, -15)
-                AddEditBtn(SlideFrame, snippet, hasInfo, -15)
+                -- Edit Button
+                local snippet = "-- Slider: " .. text .. "\nlocal val = 16\ngame.Players.LocalPlayer.Character.Humanoid.WalkSpeed = val"
+                AddEditBtn(SlideFrame, snippet)
 
                 local dragging = false
                 local function Update(input)
@@ -894,8 +774,7 @@ function Luxware.CreateWindow(titleName)
                 end)
             end
 
-            function Items:TextBox(text, placeholder, callback, infoText)
-                local hasInfo = (infoText and infoText ~= "")
+            function Items:TextBox(text, placeholder, callback)
                 local BoxFrame = Create("Frame", {
                     Parent = Container,
                     Size = UDim2.new(1, 0, 0, 42),
@@ -917,7 +796,7 @@ function Luxware.CreateWindow(titleName)
                 
                 local Input = Create("TextBox", {
                     Parent = BoxFrame,
-                    Size = UDim2.new(1, hasInfo and -195 or -160, 0.7, 0),
+                    Size = UDim2.new(1, -160, 0.7, 0),
                     Position = UDim2.new(0, 110, 0.15, 0),
                     BackgroundColor3 = Theme.Sidebar,
                     Text = "",
@@ -928,16 +807,14 @@ function Luxware.CreateWindow(titleName)
                 })
                 Create("UICorner", {Parent = Input, CornerRadius = UDim.new(0, 6)})
 
-                AddInfoBtn(BoxFrame, text, infoText)
-                AddEditBtn(BoxFrame, "-- TextBox: " .. text .. "\nprint('User typed something')", hasInfo)
+                AddEditBtn(BoxFrame, "-- TextBox: " .. text .. "\nprint('User typed something')")
                 
                 Input.FocusLost:Connect(function(enter)
                     if enter then pcall(callback, Input.Text) end
                 end)
             end
 
-            function Items:KeyBind(text, defaultKey, callback, infoText)
-                local hasInfo = (infoText and infoText ~= "")
+            function Items:KeyBind(text, defaultKey, callback)
                 local KeyFrame = Create("Frame", {
                     Parent = Container,
                     Size = UDim2.new(1, 0, 0, 42),
@@ -951,7 +828,7 @@ function Luxware.CreateWindow(titleName)
                     Font = Enum.Font.GothamMedium,
                     TextSize = 14,
                     TextColor3 = Theme.Text,
-                    Size = UDim2.new(1, hasInfo and -135 or -100, 1, 0),
+                    Size = UDim2.new(1, -100, 1, 0),
                     Position = UDim2.new(0, 15, 0, 0),
                     BackgroundTransparency = 1,
                     TextXAlignment = Enum.TextXAlignment.Left
@@ -960,7 +837,7 @@ function Luxware.CreateWindow(titleName)
                 local BindBtn = Create("TextButton", {
                     Parent = KeyFrame,
                     Size = UDim2.new(0, 80, 0, 24),
-                    Position = UDim2.new(1, hasInfo and -160 or -125, 0.5, -12),
+                    Position = UDim2.new(1, -125, 0.5, -12),
                     BackgroundColor3 = Theme.Sidebar,
                     Text = defaultKey.Name,
                     Font = Enum.Font.GothamBold,
@@ -969,8 +846,7 @@ function Luxware.CreateWindow(titleName)
                 })
                 Create("UICorner", {Parent = BindBtn, CornerRadius = UDim.new(0, 6)})
 
-                AddInfoBtn(KeyFrame, text, infoText)
-                AddEditBtn(KeyFrame, "-- Keybind: " .. text .. "\n-- Key Pressed Logic", hasInfo)
+                AddEditBtn(KeyFrame, "-- Keybind: " .. text .. "\n-- Key Pressed Logic")
                 
                 local listening = false
                 local bind = defaultKey
@@ -991,8 +867,7 @@ function Luxware.CreateWindow(titleName)
                 end)
             end
 
-            function Items:DropDown(text, items, callback, infoText)
-                local hasInfo = (infoText and infoText ~= "")
+            function Items:DropDown(text, items, callback)
                 local DropFrame = Create("Frame", {
                     Parent = Container,
                     Size = UDim2.new(1, 0, 0, 42),
@@ -1014,7 +889,7 @@ function Luxware.CreateWindow(titleName)
                     Font = Enum.Font.GothamMedium,
                     TextSize = 14,
                     TextColor3 = Theme.Text,
-                    Size = UDim2.new(1, hasInfo and -95 or -60, 1, 0),
+                    Size = UDim2.new(1, -60, 1, 0),
                     Position = UDim2.new(0, 15, 0, 0),
                     BackgroundTransparency = 1,
                     TextXAlignment = Enum.TextXAlignment.Left
@@ -1026,12 +901,11 @@ function Luxware.CreateWindow(titleName)
                     Font = Enum.Font.GothamBold,
                     TextColor3 = Theme.SubText,
                     Size = UDim2.new(0, 20, 0, 20),
-                    Position = UDim2.new(1, hasInfo and -100 or -65, 0.5, -10),
+                    Position = UDim2.new(1, -65, 0.5, -10),
                     BackgroundTransparency = 1
                 })
 
-                AddInfoBtn(DropFrame, text, infoText)
-                AddEditBtn(DropFrame, "-- Dropdown: " .. text .. "\n-- Selected Item Logic", hasInfo)
+                AddEditBtn(DropFrame, "-- Dropdown: " .. text .. "\n-- Selected Item Logic")
 
                 local List = Create("Frame", {
                     Parent = DropFrame,
